@@ -17,12 +17,41 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage('');
+
+    // Check device rate limit: Max 2 submissions per 60 seconds
+    const now = Date.now();
+    let subTimes: number[] = [];
+    try {
+      subTimes = JSON.parse(localStorage.getItem('nidads_lead_sub_times') || '[]');
+    } catch {
+      subTimes = [];
+    }
+    const recentSubmissions = subTimes.filter((t: number) => now - t < 60000);
+    if (recentSubmissions.length >= 2) {
+      const waitSeconds = Math.max(1, Math.ceil((recentSubmissions[0] + 60000 - now) / 1000));
+      setErrorMessage(`1 minute ke andar same device se maximum 2 baar lead submit ki ja sakti hai. Kripya ${waitSeconds} second baad try karein.`);
+      return;
+    }
+
     setLoading(true);
 
     try {
+      let deviceId = '';
+      try {
+        deviceId = localStorage.getItem('nidads_device_id') || '';
+        if (!deviceId) {
+          deviceId = 'dev_' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+          localStorage.setItem('nidads_device_id', deviceId);
+        }
+      } catch {
+        // Fallback if cookies/localStorage disabled
+      }
+
       const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
       const utm_source = urlParams?.get('utm_source') || undefined;
       const utm_medium = urlParams?.get('utm_medium') || undefined;
@@ -32,6 +61,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
       const payload = {
         ...formData,
+        deviceId,
         source: 'Hero Form',
         utm_source,
         utm_medium,
@@ -47,6 +77,22 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+
+      const resData = await res.json().catch(() => null);
+
+      if (res.status === 429) {
+        setErrorMessage(resData?.message || '1 minute ke andar same device se maximum 2 leads submit ho sakti hain. Kripya thoda intezaar karein.');
+        return;
+      }
+
+      if (!res.ok) {
+        setErrorMessage(resData?.error || 'Lead submit nahi ho payi. Kripya dubara try karein.');
+        return;
+      }
+
+      // Record successful submission timestamp for this device
+      recentSubmissions.push(now);
+      localStorage.setItem('nidads_lead_sub_times', JSON.stringify(recentSubmissions));
 
       const existingLeads = JSON.parse(localStorage.getItem('nidads_leads') || '[]');
       existingLeads.unshift({
@@ -289,6 +335,14 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                       <option value="Career Gap / Transition">Career Gap / Transition</option>
                     </select>
                   </div>
+
+                  {/* Error / Rate limit Alert */}
+                  {errorMessage && (
+                    <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs flex items-start gap-2 animate-pulse">
+                      <span className="shrink-0 text-sm font-bold">⚠️</span>
+                      <span className="leading-relaxed">{errorMessage}</span>
+                    </div>
+                  )}
 
                   {/* CTA Submit Button with Animated Glow */}
                   <button

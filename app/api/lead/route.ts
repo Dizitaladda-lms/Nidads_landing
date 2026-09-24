@@ -4,6 +4,32 @@ const CRM_ENDPOINT = process.env.CRM_ENDPOINT || 'https://dizitaladda-crm.onrend
 const CRM_COURSE_NAME = process.env.CRM_COURSE_NAME || 'Data Science & AI Bootcamp';
 const CRM_API_KEY = process.env.CRM_API_KEY || '';
 
+// Rate Limiter: Max 2 leads per 1 minute (60 seconds) per device/IP
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 60 seconds
+const MAX_LEADS_PER_WINDOW = 2; // 2 leads max
+
+// In-memory sliding window store: clientId -> timestamp[]
+const rateLimitCache = new Map<string, number[]>();
+
+function getClientIdentifier(request: Request, bodyDeviceId?: string): string {
+  if (bodyDeviceId && typeof bodyDeviceId === 'string' && bodyDeviceId.trim().length > 3) {
+    return `device_${bodyDeviceId.trim()}`;
+  }
+
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (forwarded) {
+    const ip = forwarded.split(',')[0].trim();
+    if (ip) return `ip_${ip}`;
+  }
+
+  const realIp = request.headers.get('x-real-ip') || request.headers.get('cf-connecting-ip');
+  if (realIp) {
+    return `ip_${realIp.trim()}`;
+  }
+
+  return 'device_default';
+}
+
 export async function POST(request: Request) {
   try {
     const data = await request.json();
@@ -14,6 +40,7 @@ export async function POST(request: Request) {
       experience, 
       mode, 
       source, 
+      deviceId,
       utm_source, 
       utm_medium, 
       utm_campaign, 
@@ -22,6 +49,52 @@ export async function POST(request: Request) {
       landing_page_url,
       timestamp 
     } = data;
+
+    // Check device rate limit: Max 2 requests per 1 minute
+    const clientId = getClientIdentifier(request, deviceId);
+    const now = Date.now();
+
+    const previousTimestamps = (rateLimitCache.get(clientId) || []).filter(
+      (time) => now - time < RATE_LIMIT_WINDOW_MS
+    );
+
+    if (previousTimestamps.length >= MAX_LEADS_PER_WINDOW) {
+      const oldestTimestamp = previousTimestamps[0];
+      const waitSeconds = Math.max(1, Math.ceil((oldestTimestamp + RATE_LIMIT_WINDOW_MS - now) / 1000));
+
+      console.warn(`🛑 [RATE LIMIT BLOCKED]: ${clientId} exceeded ${MAX_LEADS_PER_WINDOW} requests in 1 min. Retry in ${waitSeconds}s.`);
+
+      return NextResponse.json(
+        {
+          error: 'Rate limit exceeded',
+          message: `1 minute ke andar same device se maximum 2 baar lead submit ki ja sakti hai. Kripya ${waitSeconds} second baad try karein.`,
+          retryAfter: waitSeconds,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(waitSeconds),
+          },
+        }
+      );
+    }
+
+    // Record this submission in rate limit cache
+    previousTimestamps.push(now);
+    rateLimitCache.set(clientId, previousTimestamps);
+
+    // Periodically prune stale cache entries
+    if (rateLimitCache.size > 1000) {
+      const pruneCutoff = now - RATE_LIMIT_WINDOW_MS;
+      rateLimitCache.forEach((times, key) => {
+        const valid = times.filter((t) => t > pruneCutoff);
+        if (valid.length === 0) {
+          rateLimitCache.delete(key);
+        } else {
+          rateLimitCache.set(key, valid);
+        }
+      });
+    }
 
     // Basic validation
     if (!fullName || !phone) {
