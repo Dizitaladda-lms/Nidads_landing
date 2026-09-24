@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 5, 11, 20;
+  --background-end-rgb: 5, 11, 20;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #050b14;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar in NIDADS Cyan */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07111e;
+}
+::-webkit-scrollbar-thumb {
+  background: #152d4e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #38b6ff;
+}
+
+/* NIDADS Electric Glows */
+.nidads-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(56, 182, 255, 0.18), transparent 70%);
+}
+
+.nidads-blue-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(84, 120, 255, 0.20), transparent 70%);
+}
+
+.nidads-card {
+  background: #07111e;
+  border: 1px solid rgba(56, 182, 255, 0.15);
+}
+
+.nidads-card:hover {
+  border-color: rgba(56, 182, 255, 0.45);
+  box-shadow: 0 0 25px rgba(56, 182, 255, 0.12);
+}
+
+.text-gradient-nidads {
+  background: linear-gradient(135deg, #ffffff 0%, #38b6ff 50%, #46d9ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* High-Converting Form Glow & Pulse Animations */
+@keyframes formAttractPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(56, 182, 255, 0.3), 0 0 35px rgba(56, 182, 255, 0.15), inset 0 0 15px rgba(56, 182, 255, 0.05);
+    border-color: rgba(56, 182, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(56, 182, 255, 0.65), 0 0 60px rgba(84, 120, 255, 0.35), inset 0 0 25px rgba(56, 182, 255, 0.12);
+    border-color: #38b6ff;
+  }
+}
+
+.form-attract-pulse {
+  animation: formAttractPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes buttonAttractGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(56, 182, 255, 0.4);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(56, 182, 255, 0.8), 0 0 40px rgba(84, 120, 255, 0.5);
+    filter: brightness(1.1);
+  }
+}
+
+.button-attract-glow {
+  animation: buttonAttractGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes badgeShimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.badge-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: badgeShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
