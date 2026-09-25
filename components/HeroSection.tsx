@@ -11,6 +11,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
     fullName: '',
     email: '',
     phone: '',
+    course: 'Data Science & AI Bootcamp',
     experience: 'Working Professional - Non Technical',
     mode: 'Online Live Interactive Batch',
   });
@@ -105,14 +106,27 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
       setSubmitted(true);
       onLeadSuccess(formData);
 
-      // Trigger automatic brochure download
+      // Trigger automatic brochure download based on course selection
       try {
-        const link = document.createElement('a');
-        link.href = '/nidads-data-science-brochure.pdf';
-        link.download = 'NIDADS-Data-Science-Course-Brochure.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const downloadFile = (url: string, filename: string) => {
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        };
+
+        if (formData.course === 'Data Analytics Bootcamp') {
+          downloadFile('/nidads-data-analytics-brochure.pdf', 'NIDADS-Data-Analytics-Course-Brochure.pdf');
+        } else if (formData.course.includes('Both')) {
+          downloadFile('/nidads-data-science-brochure.pdf', 'NIDADS-Data-Science-Course-Brochure.pdf');
+          setTimeout(() => {
+            downloadFile('/nidads-data-analytics-brochure.pdf', 'NIDADS-Data-Analytics-Course-Brochure.pdf');
+          }, 700);
+        } else {
+          downloadFile('/nidads-data-science-brochure.pdf', 'NIDADS-Data-Science-Course-Brochure.pdf');
+        }
       } catch (dlErr) {
         console.warn('Auto-download prevented:', dlErr);
       }
@@ -249,19 +263,31 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                     Your official course brochure download has started. Our Senior Career Counsellor from NIDADS will also call you shortly to guide you.
                   </p>
 
-                  {/* Manual download button if auto-download blocked */}
-                  <div className="pt-2">
-                    <a
-                      href="/nidads-data-science-brochure.pdf"
-                      download="NIDADS-Data-Science-Course-Brochure.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-lg shadow-[#38b6ff]/30 transition-all hover:scale-[1.02] cursor-pointer"
-                    >
-                      <span>📥 Download Course Brochure (PDF)</span>
-                    </a>
-                    <p className="text-[10px] text-gray-400 mt-1.5">
-                      If download did not start automatically, click the button above.
+                  {/* Dual Brochure Download Buttons */}
+                  <div className="pt-2 space-y-2">
+                    <p className="text-xs font-semibold text-gray-300">Download Official Course Brochures:</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <a
+                        href="/nidads-data-science-brochure.pdf"
+                        download="NIDADS-Data-Science-Course-Brochure.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.02] cursor-pointer"
+                      >
+                        <span>📥 Data Science (PDF)</span>
+                      </a>
+                      <a
+                        href="/nidads-data-analytics-brochure.pdf"
+                        download="NIDADS-Data-Analytics-Course-Brochure.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs shadow-md shadow-teal-500/20 transition-all hover:scale-[1.02] cursor-pointer"
+                      >
+                        <span>📥 Data Analytics (PDF)</span>
+                      </a>
+                    </div>
+                    <p className="text-[10px] text-gray-400 mt-1">
+                      If download did not start automatically, tap the respective brochure button above.
                     </p>
                   </div>
 
@@ -317,6 +343,20 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         className="w-full pl-12 sm:pl-14 pr-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
                       />
                     </div>
+                  </div>
+
+                  {/* Select Program / Brochure */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Select Program / Brochure *</label>
+                    <select
+                      value={formData.course}
+                      onChange={(e) => setFormData({ ...formData, course: e.target.value })}
+                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] transition-colors cursor-pointer"
+                    >
+                      <option value="Data Science & AI Bootcamp">Data Science &amp; AI Bootcamp Brochure</option>
+                      <option value="Data Analytics Bootcamp">Data Analytics Bootcamp Brochure</option>
+                      <option value="Both (Data Science + Data Analytics)">Both (Data Science + Data Analytics) Brochures</option>
+                    </select>
                   </div>
 
                   {/* Background / Current Status */}

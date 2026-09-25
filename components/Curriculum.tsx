@@ -103,12 +103,20 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
             36 weeks of hands-on, project-based learning covering foundational coding to production AI models.
           </p>
 
-          <button
-            onClick={onDownloadSyllabus}
-            className="mt-4 sm:mt-5 inline-block w-full xs:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-lg shadow-[#38b6ff]/25 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-          >
-            Download Detailed Syllabus (PDF)
-          </button>
+          <div className="mt-4 sm:mt-5 flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={onDownloadSyllabus}
+              className="inline-flex items-center justify-center gap-2 w-full xs:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-lg shadow-[#38b6ff]/25 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>📥 Data Science Syllabus (PDF)</span>
+            </button>
+            <button
+              onClick={onDownloadSyllabus}
+              className="inline-flex items-center justify-center gap-2 w-full xs:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs sm:text-sm shadow-lg shadow-teal-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <span>📥 Data Analytics Syllabus (PDF)</span>
+            </button>
+          </div>
         </div>
 
         {/* Modules Accordion */}

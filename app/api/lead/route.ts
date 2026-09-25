@@ -124,7 +124,7 @@ export async function POST(request: Request) {
       mobileNumber: cleanPhone,
       email: email && email.trim() ? email.trim() : null,
       domain: 'Nidads',
-      interestedCourse: CRM_COURSE_NAME,
+      interestedCourse: data.course || data.interestedCourse || CRM_COURSE_NAME,
       source: crmSource,
       preferredCentre: mode ? mode : 'Online Live Batch',
       landing_page_url: landing_page_url || 'https://nidads.com',
