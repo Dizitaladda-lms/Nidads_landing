@@ -256,6 +256,7 @@ export default function LeadModal({
                   <option value="College Student - 1st to 3rd Year">College Student (1st to 3rd Year)</option>
                   <option value="Fresher / Job Seeker">Fresher / Job Seeker</option>
                   <option value="Career Gap / Transition">Career Gap / Transition</option>
+                  <option value="others">others</option>
                 </select>
               </div>
 
