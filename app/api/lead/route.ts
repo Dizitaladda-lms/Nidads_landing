@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const CRM_ENDPOINT = process.env.CRM_ENDPOINT || 'https://dizitaladda-crm.onrender.com/api/public/leads';
+const CRM_ENDPOINT = process.env.CRM_ENDPOINT || 'https://leads.dizitaladda.com/api/public/leads';
 const CRM_COURSE_NAME = process.env.CRM_COURSE_NAME || 'Data Science & AI Bootcamp';
 const CRM_API_KEY = process.env.CRM_API_KEY || '';
 
@@ -107,8 +107,8 @@ export async function POST(request: Request) {
     // Clean phone number (strip +91 or spaces, keep 10 digits)
     const cleanPhone = phone.replace(/\D/g, '').slice(-10);
 
-    // Map source to valid CRM source types: WEBSITE, META, GOOGLE, etc.
-    let crmSource = 'WEBSITE';
+    // Map source to valid CRM source types: LANDING_PAGE, META, GOOGLE, etc.
+    let crmSource = 'LANDING_PAGE';
     if (utm_source) {
       const lower = utm_source.toLowerCase();
       if (lower.includes('fb') || lower.includes('meta') || lower.includes('instagram')) {
