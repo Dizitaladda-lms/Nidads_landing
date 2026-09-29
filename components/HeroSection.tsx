@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { captureAttribution } from '@/lib/attribution';
 
 interface HeroSectionProps {
   onLeadSuccess: (data: any) => void;
@@ -19,6 +20,11 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Capture ad attribution parameters immediately on page visit
+  useEffect(() => {
+    captureAttribution();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,23 +59,26 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
         // Fallback if cookies/localStorage disabled
       }
 
-      const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
-      const utm_source = urlParams?.get('utm_source') || undefined;
-      const utm_medium = urlParams?.get('utm_medium') || undefined;
-      const utm_campaign = urlParams?.get('utm_campaign') || undefined;
-      const utm_content = urlParams?.get('utm_content') || undefined;
-      const utm_term = urlParams?.get('utm_term') || undefined;
+      const attr = captureAttribution();
 
       const payload = {
         ...formData,
         deviceId,
         source: 'Hero Form',
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_content,
-        utm_term,
-        landing_page_url: typeof window !== 'undefined' ? window.location.href : undefined,
+        adPlatform: attr.adPlatform,
+        utm_source: attr.utm_source,
+        utm_medium: attr.utm_medium,
+        utm_campaign: attr.utm_campaign,
+        utm_content: attr.utm_content,
+        utm_term: attr.utm_term,
+        utm_id: attr.utm_id,
+        gclid: attr.gclid,
+        fbclid: attr.fbclid,
+        gad_source: attr.gad_source,
+        gbraid: attr.gbraid,
+        wbraid: attr.wbraid,
+        referrer: attr.referrer,
+        landing_page_url: attr.landing_page_url || (typeof window !== 'undefined' ? window.location.href : undefined),
         timestamp: new Date().toISOString(),
       };
 
@@ -328,7 +337,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Phone Number with India Code */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Mobile Number (WhatsApp) *</label>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Mobile Number*</label>
                     <div className="relative flex items-center">
                       <div className="absolute left-3 flex items-center text-xs text-gray-400 font-medium pointer-events-none">
                         <span>+91</span>
@@ -343,6 +352,47 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         className="w-full pl-12 sm:pl-14 pr-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
                       />
                     </div>
+                  </div>
+                  {/* {ALTERNATE NO AS OPTIONAL} */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Alternate Mobile Number*</label>
+                    <div className='realtive flex item-centre'>
+                    <div className='absolute left-3 flex item-centre text-xs text-gray-400 font-medium pointer-events-none'>
+                      <span>+91</span>
+                    </div>
+                    <input
+                     type ="tel"
+                     required
+                     pattern="[[0-9]{10}"
+                     value={formData.phone}
+                     onChange={(e) => setFormData({...formData, phone: e.target.value.replace(/\D/g, '').slice(0,10)})}
+                     placeholder='9876543210'
+                     className="w-full pl-12 sm:pl-14 pr-3.5 py-2.5 rounded-lg bg-[#050b14] broder broder-[#162c4d] text-wh ite text-base sm:text-sm focus:outline-none focus:border-[#38b6ff]  focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
+                     />                                                                                                                                                    '
+                   </div>
+                  </div>
+
+                  {/* {Select course} */}
+                  <div>
+                    <label className='block text-xs font-semibold text-gray-300 mb-1'>select course*</label>
+                    <select
+                       value={formData.course}
+                       onChange={(e) => setFormData({ ...formData, course:  e.target.value})}
+                       className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d]"
+                    >
+                       <option value="Diploma in Data Science & AI">Diploma in Data Science & Ai</option>
+                       <option value="Diploma in Data Analytics & Ai|Get Job-Ready">Diploma in Data Analytics & Ai|Get job-Ready</option>
+                       <option value="Advanced Certificate in Data Science & Ai Program">Advanced Certificate in Data Science & Ai Programe</option>
+                       <option value= "Advanced Certificate in Data Analystics & Ai Program">Advanced Certificate in Data Analystics & Ai Program</option>
+                       <option value="Certifiacte in Data Science & Ai">Certificate in Data Science & Ai</option>
+                       <option value="Certificate in Data Analystics & Ai">Certificate in Data Analystics & Ai</option>
+                       <option value="Appiled Data Analystics with Python & SQL">Appiled Data Analysrics with Python & SQL</option>
+                       <option value="Business Intelligence with PowerBI">Business Intelligence with PowerBi</option>
+                       <option value="Data Science for Product Manager">Data Science for Product Manager</option>
+                       <option value="Advanced Data Visualization">Advanced Data Visualization</option>
+                       <option value="Degree Program in Artifical Intelligence">Degree Program in Artifical Intelligence</option>
+                       <option value="Post Gradution Programe in Artifical Intelligence">Post Gradution Programe in Artifical Intelligence</option>
+                    </select>                
                   </div>
 
                   {/* Select Program / Brochure */}

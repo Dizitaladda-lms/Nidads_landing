@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { captureAttribution } from '@/lib/attribution';
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -67,23 +68,26 @@ export default function LeadModal({
         // Fallback
       }
 
-      const urlParams = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
-      const utm_source = urlParams?.get('utm_source') || undefined;
-      const utm_medium = urlParams?.get('utm_medium') || undefined;
-      const utm_campaign = urlParams?.get('utm_campaign') || undefined;
-      const utm_content = urlParams?.get('utm_content') || undefined;
-      const utm_term = urlParams?.get('utm_term') || undefined;
+      const attr = captureAttribution();
 
       const payload = {
         ...formData,
         deviceId,
         source: sourceTag,
-        utm_source,
-        utm_medium,
-        utm_campaign,
-        utm_content,
-        utm_term,
-        landing_page_url: typeof window !== 'undefined' ? window.location.href : undefined,
+        adPlatform: attr.adPlatform,
+        utm_source: attr.utm_source,
+        utm_medium: attr.utm_medium,
+        utm_campaign: attr.utm_campaign,
+        utm_content: attr.utm_content,
+        utm_term: attr.utm_term,
+        utm_id: attr.utm_id,
+        gclid: attr.gclid,
+        fbclid: attr.fbclid,
+        gad_source: attr.gad_source,
+        gbraid: attr.gbraid,
+        wbraid: attr.wbraid,
+        referrer: attr.referrer,
+        landing_page_url: attr.landing_page_url || (typeof window !== 'undefined' ? window.location.href : undefined),
         timestamp: new Date().toISOString(),
       };
 

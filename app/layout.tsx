@@ -2,12 +2,18 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Job-Ready Tech Bootcamp | 100% Placement Support & 1:1 Mentorship',
-  description: 'Master in-demand industry skills with live interactive sessions, hands-on capstone projects, MAANG mentors, and dedicated placement assistance.',
-  keywords: ['Job Bootcamp', 'Data Science Course', 'Full Stack Bootcamp', 'Placement Support', 'Tech Upskilling'],
+  metadataBase: new URL('https://ads.nidads.com'),
+  title: 'Data Science & AI Bootcamp | NIDADS (100% Placement Support)',
+  description: 'Join India’s premier Data Science, Machine Learning & Data Analytics Bootcamp at NIDADS. Live interactive sessions, hands-on capstone projects, and dedicated placement support.',
+  keywords: ['Data Science Course', 'Data Analytics Bootcamp', 'NIDADS', 'Machine Learning', 'Artificial Intelligence', 'Job Bootcamp Delhi', '100% Placement Support'],
+  alternates: {
+    canonical: 'https://ads.nidads.com',
+  },
   openGraph: {
-    title: 'Transform Your Tech Career with Intensive Job Bootcamp',
-    description: 'Learn industry tech skills, get 1:1 mentorship from top tech giants, and land high-paying roles.',
+    title: 'Master Data Science & AI with 100% Placement Support | NIDADS',
+    description: 'Learn Python, SQL, Machine Learning, Power BI & Generative AI through live production projects with NIDADS.',
+    url: 'https://ads.nidads.com',
+    siteName: 'NIDADS Data Science & AI Bootcamp',
     type: 'website',
   },
 };
