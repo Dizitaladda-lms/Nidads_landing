@@ -24,7 +24,7 @@ export default function LeadModal({
     fullName: '',
     email: '',
     phone: '',
-    course: 'Data Science & AI Bootcamp',
+    course: 'Diploma in Data Science & AI',
     experience: 'Working Professional - Non Technical',
     mode: 'Online Live Batch',
   });
@@ -176,41 +176,70 @@ export default function LeadModal({
         </button>
 
         {submitted ? (
-          <div className="py-6 text-center space-y-3 sm:space-y-4">
+          <div className="py-6 text-center space-y-4">
             <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
               ✓
             </div>
-            <h3 className="text-lg sm:text-xl font-bold">Brochure Download Started!</h3>
+            <h3 className="text-lg sm:text-xl font-bold">Thank You! Request Received</h3>
             <p className="text-xs sm:text-sm text-gray-300">
-              Your official Data Science course brochure has started downloading. Our Senior Career Advisor will also connect with you shortly on WhatsApp.
+              Your details have been submitted successfully. Choose which course brochure you want to download:
             </p>
 
-            {/* Direct Brochure Download Action Buttons */}
-            <div className="pt-2 space-y-2">
-              <p className="text-xs font-semibold text-gray-300">Download Official Course Brochures:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {/* Post-submission Brochure Selection & Download Action Buttons */}
+            <div className="pt-2 space-y-3 bg-[#050b14]/80 p-4 rounded-xl border border-[#162c4d]">
+              <p className="text-xs font-bold text-[#38b6ff] uppercase tracking-wider">
+                Select Course Brochure to Download:
+              </p>
+              <div className="grid grid-cols-1 gap-2.5">
                 <a
                   href="/nidads-data-science-brochure.pdf"
                   download="NIDADS-Data-Science-Course-Brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.02] cursor-pointer"
+                  className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.01] cursor-pointer"
                 >
-                  <span>📥 Data Science (PDF)</span>
+                  <span className="flex items-center gap-2">
+                    <span>📘</span>
+                    <span>Data Science &amp; AI Brochure</span>
+                  </span>
+                  <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download PDF</span>
                 </a>
                 <a
                   href="/nidads-data-analytics-brochure.pdf"
                   download="NIDADS-Data-Analytics-Course-Brochure.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs shadow-md shadow-teal-500/20 transition-all hover:scale-[1.02] cursor-pointer"
+                  className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs sm:text-sm shadow-md shadow-teal-500/20 transition-all hover:scale-[1.01] cursor-pointer"
                 >
-                  <span>📥 Data Analytics (PDF)</span>
+                  <span className="flex items-center gap-2">
+                    <span>📊</span>
+                    <span>Data Analytics &amp; AI Brochure</span>
+                  </span>
+                  <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download PDF</span>
                 </a>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const dl = (url: string, file: string) => {
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = file;
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                    };
+                    dl('/nidads-data-science-brochure.pdf', 'NIDADS-Data-Science-Course-Brochure.pdf');
+                    setTimeout(() => dl('/nidads-data-analytics-brochure.pdf', 'NIDADS-Data-Analytics-Course-Brochure.pdf'), 600);
+                  }}
+                  className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.01] cursor-pointer w-full"
+                >
+                  <span className="flex items-center gap-2">
+                    <span>📚</span>
+                    <span>Download Both (Science + Analytics)</span>
+                  </span>
+                  <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download All</span>
+                </button>
               </div>
-              <p className="text-[10px] text-gray-400 mt-1">
-                Tap above if the download didn&apos;t start automatically.
-              </p>
             </div>
 
             <button
@@ -274,15 +303,24 @@ export default function LeadModal({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-300 mb-1">Select Program / Brochure *</label>
+                <label className="block text-xs font-semibold text-gray-300 mb-1">Select Course *</label>
                 <select
                   value={formData.course}
                   onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] cursor-pointer"
                 >
-                  <option value="Data Science & AI Bootcamp">Data Science &amp; AI Bootcamp Brochure</option>
-                  <option value="Data Analytics Bootcamp">Data Analytics Bootcamp Brochure</option>
-                  <option value="Both (Data Science + Data Analytics)">Both (Data Science + Data Analytics) Brochures</option>
+                  <option value="Diploma in Data Science & AI">Diploma in Data Science &amp; AI</option>
+                  <option value="Diploma in Data Analytics & AI | Get Job-Ready">Diploma in Data Analytics &amp; AI | Get Job-Ready</option>
+                  <option value="Advanced Certificate in Data Science & AI Program">Advanced Certificate in Data Science &amp; AI Program</option>
+                  <option value="Advanced Certificate in Data Analytics & AI Program">Advanced Certificate in Data Analytics &amp; AI Program</option>
+                  <option value="Certificate in Data Science & AI">Certificate in Data Science &amp; AI</option>
+                  <option value="Certificate in Data Analytics & AI">Certificate in Data Analytics &amp; AI</option>
+                  <option value="Applied Data Analytics with Python & SQL">Applied Data Analytics with Python &amp; SQL</option>
+                  <option value="Business Intelligence with Power BI">Business Intelligence with Power BI</option>
+                  <option value="Data Science for Product Managers">Data Science for Product Managers</option>
+                  <option value="Advanced Data Visualization">Advanced Data Visualization</option>
+                  <option value="Degree Program in Artificial Intelligence">Degree Program in Artificial Intelligence</option>
+                  <option value="Post Graduation Program in Artificial Intelligence">Post Graduation Program in Artificial Intelligence</option>
                 </select>
               </div>
 
@@ -299,7 +337,7 @@ export default function LeadModal({
                   <option value="College Student - 1st to 3rd Year">College Student (1st to 3rd Year)</option>
                   <option value="Fresher / Job Seeker">Fresher / Job Seeker</option>
                   <option value="Career Gap / Transition">Career Gap / Transition</option>
-                  <option value="others">others</option>
+                  <option value="Others">Others</option>
                 </select>
               </div>
 

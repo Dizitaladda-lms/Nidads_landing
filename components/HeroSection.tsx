@@ -263,41 +263,70 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
               </div>
 
               {submitted ? (
-                <div className="py-6 sm:py-8 text-center space-y-3 sm:space-y-4">
+                <div className="py-6 sm:py-8 text-center space-y-4">
                   <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
                     ✓
                   </div>
                   <h4 className="text-lg sm:text-xl font-bold text-white">Thank You! Request Received</h4>
                   <p className="text-xs sm:text-sm text-gray-300">
-                    Your official course brochure download has started. Our Senior Career Counsellor from NIDADS will also call you shortly to guide you.
+                    Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.
                   </p>
 
-                  {/* Dual Brochure Download Buttons */}
-                  <div className="pt-2 space-y-2">
-                    <p className="text-xs font-semibold text-gray-300">Download Official Course Brochures:</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {/* Post-submission Brochure Choice & Download Buttons */}
+                  <div className="pt-2 space-y-3 bg-[#050b14]/80 p-4 rounded-xl border border-[#162c4d]">
+                    <p className="text-xs font-bold text-[#38b6ff] uppercase tracking-wider">
+                      Select Course Brochure to Download:
+                    </p>
+                    <div className="grid grid-cols-1 gap-2.5">
                       <a
                         href="/nidads-data-science-brochure.pdf"
                         download="NIDADS-Data-Science-Course-Brochure.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.02] cursor-pointer"
+                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.01] cursor-pointer"
                       >
-                        <span>📥 Data Science (PDF)</span>
+                        <span className="flex items-center gap-2">
+                          <span>📘</span>
+                          <span>Data Science &amp; AI Brochure</span>
+                        </span>
+                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download PDF</span>
                       </a>
                       <a
                         href="/nidads-data-analytics-brochure.pdf"
                         download="NIDADS-Data-Analytics-Course-Brochure.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs shadow-md shadow-teal-500/20 transition-all hover:scale-[1.02] cursor-pointer"
+                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs sm:text-sm shadow-md shadow-teal-500/20 transition-all hover:scale-[1.01] cursor-pointer"
                       >
-                        <span>📥 Data Analytics (PDF)</span>
+                        <span className="flex items-center gap-2">
+                          <span>📊</span>
+                          <span>Data Analytics &amp; AI Brochure</span>
+                        </span>
+                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download PDF</span>
                       </a>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const dl = (url: string, file: string) => {
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = file;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                          };
+                          dl('/nidads-data-science-brochure.pdf', 'NIDADS-Data-Science-Course-Brochure.pdf');
+                          setTimeout(() => dl('/nidads-data-analytics-brochure.pdf', 'NIDADS-Data-Analytics-Course-Brochure.pdf'), 600);
+                        }}
+                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.01] cursor-pointer w-full"
+                      >
+                        <span className="flex items-center gap-2">
+                          <span>📚</span>
+                          <span>Download Both (Science + Analytics)</span>
+                        </span>
+                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download All</span>
+                      </button>
                     </div>
-                    <p className="text-[10px] text-gray-400 mt-1">
-                      If download did not start automatically, tap the respective brochure button above.
-                    </p>
                   </div>
 
                   <button
@@ -337,7 +366,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Phone Number with India Code */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Mobile Number*</label>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Mobile Number *</label>
                     <div className="relative flex items-center">
                       <div className="absolute left-3 flex items-center text-xs text-gray-400 font-medium pointer-events-none">
                         <span>+91</span>
@@ -353,59 +382,27 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                       />
                     </div>
                   </div>
-                  {/* {ALTERNATE NO AS OPTIONAL} */}
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Alternate Mobile Number*</label>
-                    <div className='realtive flex item-centre'>
-                    <div className='absolute left-3 flex item-centre text-xs text-gray-400 font-medium pointer-events-none'>
-                      <span>+91</span>
-                    </div>
-                    <input
-                     type ="tel"
-                     required
-                     pattern="[[0-9]{10}"
-                     value={formData.phone}
-                     onChange={(e) => setFormData({...formData, phone: e.target.value.replace(/\D/g, '').slice(0,10)})}
-                     placeholder='9876543210'
-                     className="w-full pl-12 sm:pl-14 pr-3.5 py-2.5 rounded-lg bg-[#050b14] broder broder-[#162c4d] text-wh ite text-base sm:text-sm focus:outline-none focus:border-[#38b6ff]  focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
-                     />                                                                                                                                                    '
-                   </div>
-                  </div>
 
-                  {/* {Select course} */}
+                  {/* Select Course */}
                   <div>
-                    <label className='block text-xs font-semibold text-gray-300 mb-1'>select course*</label>
-                    <select
-                       value={formData.course}
-                       onChange={(e) => setFormData({ ...formData, course:  e.target.value})}
-                       className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d]"
-                    >
-                       <option value="Diploma in Data Science & AI">Diploma in Data Science & Ai</option>
-                       <option value="Diploma in Data Analytics & Ai|Get Job-Ready">Diploma in Data Analytics & Ai|Get job-Ready</option>
-                       <option value="Advanced Certificate in Data Science & Ai Program">Advanced Certificate in Data Science & Ai Programe</option>
-                       <option value= "Advanced Certificate in Data Analystics & Ai Program">Advanced Certificate in Data Analystics & Ai Program</option>
-                       <option value="Certifiacte in Data Science & Ai">Certificate in Data Science & Ai</option>
-                       <option value="Certificate in Data Analystics & Ai">Certificate in Data Analystics & Ai</option>
-                       <option value="Appiled Data Analystics with Python & SQL">Appiled Data Analysrics with Python & SQL</option>
-                       <option value="Business Intelligence with PowerBI">Business Intelligence with PowerBi</option>
-                       <option value="Data Science for Product Manager">Data Science for Product Manager</option>
-                       <option value="Advanced Data Visualization">Advanced Data Visualization</option>
-                       <option value="Degree Program in Artifical Intelligence">Degree Program in Artifical Intelligence</option>
-                       <option value="Post Gradution Programe in Artifical Intelligence">Post Gradution Programe in Artifical Intelligence</option>
-                    </select>                
-                  </div>
-
-                  {/* Select Program / Brochure */}
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Select Program / Brochure *</label>
+                    <label className="block text-xs font-semibold text-gray-300 mb-1">Select Course *</label>
                     <select
                       value={formData.course}
                       onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] transition-colors cursor-pointer"
                     >
-                      <option value="Data Science & AI Bootcamp">Data Science &amp; AI Bootcamp Brochure</option>
-                      <option value="Data Analytics Bootcamp">Data Analytics Bootcamp Brochure</option>
-                      <option value="Both (Data Science + Data Analytics)">Both (Data Science + Data Analytics) Brochures</option>
+                      <option value="Diploma in Data Science & AI">Diploma in Data Science &amp; AI</option>
+                      <option value="Diploma in Data Analytics & AI | Get Job-Ready">Diploma in Data Analytics &amp; AI | Get Job-Ready</option>
+                      <option value="Advanced Certificate in Data Science & AI Program">Advanced Certificate in Data Science &amp; AI Program</option>
+                      <option value="Advanced Certificate in Data Analytics & AI Program">Advanced Certificate in Data Analytics &amp; AI Program</option>
+                      <option value="Certificate in Data Science & AI">Certificate in Data Science &amp; AI</option>
+                      <option value="Certificate in Data Analytics & AI">Certificate in Data Analytics &amp; AI</option>
+                      <option value="Applied Data Analytics with Python & SQL">Applied Data Analytics with Python &amp; SQL</option>
+                      <option value="Business Intelligence with Power BI">Business Intelligence with Power BI</option>
+                      <option value="Data Science for Product Managers">Data Science for Product Managers</option>
+                      <option value="Advanced Data Visualization">Advanced Data Visualization</option>
+                      <option value="Degree Program in Artificial Intelligence">Degree Program in Artificial Intelligence</option>
+                      <option value="Post Graduation Program in Artificial Intelligence">Post Graduation Program in Artificial Intelligence</option>
                     </select>
                   </div>
 
@@ -423,7 +420,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                       <option value="College Student - 1st to 3rd Year">College Student (1st to 3rd Year)</option>
                       <option value="Fresher / Job Seeker">Fresher / Job Seeker</option>
                       <option value="Career Gap / Transition">Career Gap / Transition</option>
-                      <option value="others">others</option>
+                      <option value="Others">Others</option>
                     </select>
                   </div>
 
