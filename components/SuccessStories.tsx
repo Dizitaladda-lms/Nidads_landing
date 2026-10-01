@@ -45,19 +45,19 @@ export default function SuccessStories() {
         </div>
 
         {/* Video Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {videoReviews.map((item, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-[#07111e] border border-[#152d4e] overflow-hidden flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 shadow-xl hover:shadow-[#38b6ff]/15"
+              className="rounded-2xl bg-[#07111e] border border-[#152d4e] overflow-hidden flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 shadow-2xl hover:shadow-[#38b6ff]/20"
             >
-              {/* Video Player */}
-              <div className="relative aspect-video bg-black/90 overflow-hidden flex items-center justify-center">
+              {/* Video Player - 9:16 Vertical Reel Format */}
+              <div className="relative w-full aspect-[9/16] bg-black/95 overflow-hidden flex items-center justify-center">
                 <video
                   controls
                   playsInline
                   preload="metadata"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-black"
                 >
                   <source src={item.videoUrl} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -65,7 +65,7 @@ export default function SuccessStories() {
               </div>
 
               {/* Card Meta & Details */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-[#07111e]">
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
                     <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#38b6ff]/15 border border-[#38b6ff]/30 text-[#38b6ff] font-bold text-[10px] sm:text-xs">
