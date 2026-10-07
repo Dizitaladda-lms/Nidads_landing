@@ -178,7 +178,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
               Master <span className="text-[#38b6ff]">Data Science</span> &amp; <br className="hidden xs:inline" />
               <span className="text-white">Data Analytics</span> with{' '}
               <span className="bg-gradient-to-r from-[#38b6ff] via-[#46d9ff] to-[#5478ff] bg-clip-text text-transparent">
-                Artificial Intelligence
+                AI
               </span>
             </h1>
 
