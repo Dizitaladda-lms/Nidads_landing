@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import AutoCarousel from '@/components/AutoCarousel';
 
 export default function MentorsSection() {
   const mentors = [
@@ -63,7 +64,7 @@ export default function MentorsSection() {
         </div>
 
         {/* Mentors Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <AutoCarousel desktopClassName="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6" mobileClassName="sm:hidden">
           {mentors.map((m, idx) => (
             <div
               key={idx}
@@ -90,7 +91,7 @@ export default function MentorsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </AutoCarousel>
 
       </div>
     </section>

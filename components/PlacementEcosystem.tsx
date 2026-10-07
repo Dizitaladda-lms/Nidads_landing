@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import AutoCarousel from '@/components/AutoCarousel';
 
 interface PlacementProps {
   onOpenModal: () => void;
@@ -51,11 +52,11 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
         </div>
 
         {/* 4 Step Cards */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+        <AutoCarousel desktopClassName="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6" mobileClassName="sm:hidden">
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className="relative rounded-2xl bg-[#0a1626] border border-[#152d4e] p-3 sm:p-6 flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10"
+              className="relative rounded-2xl bg-[#0a1626] border border-[#152d4e] p-6 flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10"
             >
               <div>
                 <div className="mb-4">
@@ -64,7 +65,7 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
                   </span>
                 </div>
 
-                <h3 className="text-sm sm:text-base font-bold text-white mb-2">
+                <h3 className="text-base font-bold text-white mb-2">
                   {item.title}
                 </h3>
 
@@ -78,7 +79,7 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
               </div>
             </div>
           ))}
-        </div>
+        </AutoCarousel>
 
         {/* Placement Track Record Banner */}
         <div className="mt-12 rounded-2xl bg-gradient-to-r from-[#0a1626] via-[#07111e] to-[#0369a1]/30 border border-[#38b6ff]/40 p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">

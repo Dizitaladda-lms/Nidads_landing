@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import AutoCarousel from '@/components/AutoCarousel';
 
 export default function WhyBootcamp() {
   const highlights = [
@@ -55,11 +56,11 @@ export default function WhyBootcamp() {
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-6">
+        <AutoCarousel desktopClassName="hidden md:grid md:grid-cols-2 gap-6">
           {highlights.map((item, idx) => (
             <div
               key={idx}
-              className={`p-3 sm:p-6 md:p-8 rounded-2xl bg-[#07111e] border ${item.color} backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10`}
+              className={`p-6 sm:p-8 rounded-2xl bg-[#07111e] border ${item.color} backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10`}
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="text-2xl font-black text-gray-500 font-mono">
@@ -69,7 +70,7 @@ export default function WhyBootcamp() {
                   {item.badge}
                 </span>
               </div>
-              <h3 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-2">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                 {item.title}
               </h3>
               <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
@@ -77,14 +78,14 @@ export default function WhyBootcamp() {
               </p>
             </div>
           ))}
-        </div>
+        </AutoCarousel>
 
         {/* Comparison Box */}
         <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-[#07111e] border border-[#152d4e]">
           <h3 className="text-lg sm:text-xl font-bold text-white text-center mb-6">
             The NIDADS Edge: Us vs. Self-Study / College Degrees
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 text-xs sm:text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
             
             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-2 text-gray-400">
               <div className="font-bold text-gray-300 text-sm">Self-Learning (YouTube)</div>
@@ -102,7 +103,7 @@ export default function WhyBootcamp() {
               <p>&bull; 3-4 years long duration</p>
             </div>
 
-            <div className="col-span-2 md:col-span-1 p-4 rounded-xl bg-[#e0f2fe] border border-[#7dd3fc] space-y-2 text-slate-700 shadow-xl shadow-[#38b6ff]/10">
+            <div className="p-4 rounded-xl bg-[#e0f2fe] border border-[#7dd3fc] space-y-2 text-slate-700 shadow-xl shadow-[#38b6ff]/10">
               <div className="font-bold text-[#102a43] text-sm flex items-center justify-between">
                 <span>NIDADS Job Bootcamp</span>
                 <span className="text-[10px] bg-[#0284c7] text-white px-2 py-0.5 rounded-full font-extrabold">RECOMMENDED</span>

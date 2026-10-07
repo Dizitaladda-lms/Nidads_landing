@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import AutoCarousel from '@/components/AutoCarousel';
 
 export default function SuccessStories() {
   const videoReviews = [
@@ -45,7 +46,7 @@ export default function SuccessStories() {
         </div>
 
         {/* Video Reviews Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8 max-w-5xl mx-auto">
+        <AutoCarousel desktopClassName="hidden md:grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {videoReviews.map((item, idx) => (
             <div
               key={idx}
@@ -84,7 +85,7 @@ export default function SuccessStories() {
               </div>
             </div>
           ))}
-        </div>
+        </AutoCarousel>
 
       </div>
     </section>
