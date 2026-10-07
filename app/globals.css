@@ -36,15 +36,6 @@ body {
   background: #38b6ff;
 }
 
-/* NIDADS Electric Glows */
-.nidads-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(56, 182, 255, 0.18), transparent 70%);
-}
-
-.nidads-blue-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(84, 120, 255, 0.20), transparent 70%);
-}
-
 .nidads-card {
   background: #07111e;
   border: 1px solid rgba(56, 182, 255, 0.15);
@@ -55,59 +46,42 @@ body {
   box-shadow: 0 0 25px rgba(56, 182, 255, 0.12);
 }
 
-.text-gradient-nidads {
-  background: linear-gradient(135deg, #ffffff 0%, #38b6ff 50%, #46d9ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* High-Converting Form Glow & Pulse Animations */
-@keyframes formAttractPulse {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(56, 182, 255, 0.3), 0 0 35px rgba(56, 182, 255, 0.15), inset 0 0 15px rgba(56, 182, 255, 0.05);
-    border-color: rgba(56, 182, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(56, 182, 255, 0.65), 0 0 60px rgba(84, 120, 255, 0.35), inset 0 0 25px rgba(56, 182, 255, 0.12);
-    border-color: #38b6ff;
-  }
-}
-
-.form-attract-pulse {
-  animation: formAttractPulse 2.8s ease-in-out infinite;
-}
-
-@keyframes buttonAttractGlow {
-  0%, 100% {
-    box-shadow: 0 4px 20px rgba(56, 182, 255, 0.4);
-    filter: brightness(1);
-  }
-  50% {
-    box-shadow: 0 4px 30px rgba(56, 182, 255, 0.8), 0 0 40px rgba(84, 120, 255, 0.5);
-    filter: brightness(1.1);
-  }
-}
-
-.button-attract-glow {
-  animation: buttonAttractGlow 2.2s ease-in-out infinite;
-}
-
-@keyframes badgeShimmer {
-  0% {
-    transform: translateX(-150%);
-  }
-  100% {
-    transform: translateX(250%);
-  }
-}
-
 .badge-shimmer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  animation: badgeShimmer 3s ease-in-out infinite;
-  pointer-events: none;
+  display: none;
+}
+
+.font-bold {
+  font-weight: 500;
+}
+
+.font-extrabold,
+.font-black {
+  font-weight: 600;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+[class*="bg-gradient-to-"] {
+  background-image: none !important;
+  background-color: #0284c7;
+}
+
+[class*="bg-gradient-to-"][class*="from-[#0a1626]"],
+[class*="bg-gradient-to-"][class*="from-[#07111e]"],
+[class*="bg-gradient-to-"][class*="from-[#0c1b2f]"],
+[class*="bg-gradient-to-"][class*="from-[#050b14]"] {
+  background-color: #07111e;
+}
+
+[class*="bg-clip-text"] {
+  background-color: transparent !important;
+  color: #38b6ff !important;
+  -webkit-text-fill-color: #38b6ff;
+}
+
+[class*="radial-gradient"] {
+  background-image: none !important;
 }

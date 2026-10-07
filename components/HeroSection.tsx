@@ -154,11 +154,11 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* On desktop: 2-column grid. On mobile: stacked with Headline -> Animated Form -> Pillars/Stats */}
+        {/* On desktop: 2-column grid. On mobile: show the lead form before the headline. */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* 1. Header Portion (Headline & Subhead) */}
-          <div className="w-full lg:col-span-7 space-y-4 sm:space-y-6 order-1">
+          <div className="w-full lg:col-span-7 space-y-4 sm:space-y-6 order-2 lg:order-1">
             
             {/* Mode Selector / Badge */}
             <div className="flex flex-wrap items-center gap-2">
@@ -237,8 +237,8 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
           </div>
 
-          {/* 2. Form Column: HIGH-CONVERTING ANIMATED ATTRACT FORM (order-2 on mobile so it is right below headline!) */}
-          <div className="w-full lg:col-span-5 order-2">
+          {/* 2. Form Column: visible immediately on mobile and beside the headline on desktop. */}
+          <div className="w-full lg:col-span-5 order-1 lg:order-2">
             <div className="relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#38b6ff]/60 form-attract-pulse">
               
               {/* Animated Shimmer Badge above form */}

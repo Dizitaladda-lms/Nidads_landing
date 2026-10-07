@@ -19,10 +19,6 @@ export default function HiringPartners() {
 
       {/* Infinite scrolling logo row */}
       <div className="relative w-full overflow-hidden">
-        {/* Left & Right gradient fade masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#07111e] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#07111e] to-transparent z-10 pointer-events-none" />
-
         <div className="flex w-max animate-marquee space-x-8 items-center py-2">
           {[...companies, ...companies].map((company, index) => (
             <div

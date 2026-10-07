@@ -75,7 +75,6 @@ export default function LandingPage() {
 
       {/* 13. Pre-Footer High-Impact Conversion Card */}
       <section className="py-16 sm:py-20 bg-gradient-to-b from-[#07111e] to-[#050b14] border-t border-[#152d4e] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#38b6ff]/15 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <div className="inline-block px-3.5 py-1.5 rounded-full bg-[#38b6ff]/10 border border-[#38b6ff]/30 text-[#38b6ff] text-xs font-bold uppercase tracking-wider">
             Admissions Closing Soon
