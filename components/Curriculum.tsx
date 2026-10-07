@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import BrandLogo from '@/components/BrandLogo';
+import AutoCarousel from '@/components/AutoCarousel';
 
 const toolDomains: Record<string, string> = {
   'Python 3.12': 'python.org',
@@ -155,7 +156,11 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
         </div>
 
         {/* Modules Accordion */}
-        <div className="space-y-3 sm:space-y-4">
+        <AutoCarousel
+          desktopClassName="hidden md:block md:space-y-4"
+          mobileClassName="md:hidden"
+          intervalMs={8000}
+        >
           {modules.map((mod, idx) => {
             const isOpen = openIndex === idx;
             return (
@@ -224,7 +229,7 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
               </div>
             );
           })}
-        </div>
+        </AutoCarousel>
 
         {/* Bottom Banner - Stacks on mobile */}
         <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#0369a1]/30 via-[#07111e] to-[#050b14] border border-[#38b6ff]/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
