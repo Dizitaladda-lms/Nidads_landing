@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 5, 11, 20;
-  --background-end-rgb: 5, 11, 20;
+  --foreground-rgb: 16, 42, 67;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 240, 249, 255;
 }
 
 html {
@@ -15,21 +15,30 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #050b14;
+  background: #ffffff;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar in NIDADS Cyan */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #102a43 !important;
+}
+
+/* Custom Scrollbar in NIDADS Blue */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #07111e;
+  background: #eff8ff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #152d4e;
+  background: #bfdbfe;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -37,13 +46,17 @@ body {
 }
 
 .nidads-card {
-  background: #07111e;
-  border: 1px solid rgba(56, 182, 255, 0.15);
+  background: #ffffff;
+  border: 1px solid #dbeafe;
 }
 
 .nidads-card:hover {
-  border-color: rgba(56, 182, 255, 0.45);
-  box-shadow: 0 0 25px rgba(56, 182, 255, 0.12);
+  border-color: #93c5fd;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+}
+
+.nidads-logo {
+  filter: brightness(0) saturate(100%) invert(39%) sepia(99%) saturate(1245%) hue-rotate(166deg) brightness(95%) contrast(101%);
 }
 
 .badge-shimmer {
@@ -64,24 +77,128 @@ b {
   font-weight: 600;
 }
 
+[class~="bg-[#050b14]"],
+[class~="bg-[#0a0a0f]"] {
+  background-color: #ffffff !important;
+}
+
+[class~="bg-[#050b14]/50"] {
+  background-color: #f8fbff !important;
+}
+
+[class~="bg-[#07111e]"],
+[class~="bg-[#050b14]/80"] {
+  background-color: #f0f8ff !important;
+}
+
+[class~="bg-[#0a1626]"],
+[class~="bg-[#0c1b2f]"] {
+  background-color: #ffffff !important;
+}
+
+[class~="border-[#152d4e]"],
+[class~="border-[#162c4d]"] {
+  border-color: #dbeafe !important;
+}
+
+[class~="text-white"],
+[class~="text-slate-100"],
+[class~="text-gray-100"],
+[class~="text-gray-200"],
+[class~="text-gray-300"],
+[class~="text-gray-400"] {
+  color: #16324f !important;
+}
+
+[class~="text-gray-500"],
+[class~="text-gray-600"] {
+  color: #526b84 !important;
+}
+
+[class~="text-[#38b6ff]"],
+[class~="text-[#46d9ff]"],
+[class~="text-[#5478ff]"],
+[class~="text-emerald-400"],
+[class~="text-emerald-200"] {
+  color: #0369a1 !important;
+}
+
+[class~="text-[#ffbf5f]"],
+[class~="text-amber-400"],
+[class~="text-amber-200"] {
+  color: #92400e !important;
+}
+
+[class~="text-red-400"] {
+  color: #b91c1c !important;
+}
+
+[class~="bg-white/5"],
+[class~="bg-white/10"] {
+  background-color: #eff8ff !important;
+}
+
+[class~="border-white/10"] {
+  border-color: #dbeafe !important;
+}
+
+.sub-navigation {
+  background-color: #ffffff !important;
+  border-color: #dbeafe !important;
+  color: #16324f !important;
+}
+
+.sub-navigation a {
+  color: #526b84 !important;
+}
+
+.sub-navigation a:hover {
+  color: #102a43 !important;
+}
+
+.sub-navigation a[data-active="true"] {
+  background-color: #e0f2fe !important;
+  border-color: #7dd3fc !important;
+  color: #075985 !important;
+}
+
 [class*="bg-gradient-to-"] {
   background-image: none !important;
-  background-color: #0284c7;
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
 }
 
 [class*="bg-gradient-to-"][class*="from-[#0a1626]"],
 [class*="bg-gradient-to-"][class*="from-[#07111e]"],
 [class*="bg-gradient-to-"][class*="from-[#0c1b2f]"],
 [class*="bg-gradient-to-"][class*="from-[#050b14]"] {
-  background-color: #07111e;
+  background-color: #f0f8ff !important;
+  color: #16324f !important;
 }
 
 [class*="bg-clip-text"] {
   background-color: transparent !important;
-  color: #38b6ff !important;
-  -webkit-text-fill-color: #38b6ff;
+  color: #0369a1 !important;
+  -webkit-text-fill-color: #0369a1;
 }
 
 [class*="radial-gradient"] {
   background-image: none !important;
+}
+
+input,
+select,
+textarea {
+  color: #16324f;
+  background-color: #ffffff;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8296a9;
+}
+
+::selection {
+  background: #bfdbfe;
+  color: #16324f;
 }

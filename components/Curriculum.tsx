@@ -1,6 +1,41 @@
 'use client';
 
 import React, { useState } from 'react';
+import BrandLogo from '@/components/BrandLogo';
+
+const toolDomains: Record<string, string> = {
+  'Python 3.12': 'python.org',
+  PostgreSQL: 'postgresql.org',
+  'Git & GitHub': 'github.com',
+  NumPy: 'numpy.org',
+  Pandas: 'pandas.pydata.org',
+  PowerBI: 'powerbi.microsoft.com',
+  Tableau: 'tableau.com',
+  Seaborn: 'seaborn.pydata.org',
+  Matplotlib: 'matplotlib.org',
+  SciPy: 'scipy.org',
+  Excel: 'microsoft.com',
+  'Scikit-Learn': 'scikit-learn.org',
+  XGBoost: 'xgboost.ai',
+  LightGBM: 'github.com',
+  Flask: 'palletsprojects.com',
+  Docker: 'docker.com',
+  PyTorch: 'pytorch.org',
+  TensorFlow: 'tensorflow.org',
+  HuggingFace: 'huggingface.co',
+  OpenCV: 'opencv.org',
+  LangChain: 'langchain.com',
+  LlamaIndex: 'llamaindex.ai',
+  'OpenAI API': 'openai.com',
+  ChromaDB: 'trychroma.com',
+  Pinecone: 'pinecone.io',
+  CrewAI: 'crewai.com',
+  'AWS / GCP': 'aws.amazon.com',
+  FastAPI: 'fastapi.tiangolo.com',
+  MLflow: 'mlflow.org',
+  Streamlit: 'streamlit.io',
+  'Next.js': 'nextjs.org',
+};
 
 interface CurriculumProps {
   onDownloadSyllabus: () => void;
@@ -156,8 +191,9 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
                       {mod.tools.map((t, i) => (
                         <span
                           key={i}
-                          className="text-[9px] sm:text-[10px] font-medium bg-white/5 border border-white/10 text-gray-300 px-1.5 sm:px-2 py-0.5 rounded"
+                          className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-medium bg-white/5 border border-white/10 text-gray-600 px-1.5 sm:px-2 py-1 rounded"
                         >
+                          {toolDomains[t] && <BrandLogo name={t} domain={toolDomains[t]} size={18} />}
                           {t}
                         </span>
                       ))}

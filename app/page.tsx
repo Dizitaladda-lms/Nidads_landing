@@ -16,6 +16,7 @@ import LeadModal from '@/components/LeadModal';
 import MobileStickyBar from '@/components/MobileStickyBar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import AdminLeadViewer from '@/components/AdminLeadViewer';
+import NidadsLogo from '@/components/NidadsLogo';
 
 export default function LandingPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -117,35 +118,27 @@ export default function LandingPage() {
       </section>
 
       {/* 14. Isolated Footer (Zero Outbound Leaks with mobile bottom clearance) */}
-      <footer className="bg-[#03070d] border-t border-[#152d4e] pt-8 sm:pt-10 pb-24 sm:pb-10 text-gray-400 text-xs">
+      <footer className="bg-transparent border-t border-[#dbeafe] pt-8 sm:pt-10 pb-24 sm:pb-10 text-slate-700 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <img
-                src="https://www.nidads.com/Nidads-2.webp"
-                alt="NIDADS Logo"
-                className="h-8 w-auto object-contain brightness-110"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
-              />
-              <span className="text-white font-bold text-base tracking-tight">NIDADS ACADEMY</span>
+              <NidadsLogo size="footer" />
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-gray-400 text-xs text-center">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-slate-600 text-xs text-center">
               <span>Savitri Cinema, Space Time Building, GK-II, New Delhi 110048</span>
-              <span className="hidden sm:inline">&bull;</span>
-              <a href="tel:+919205436796" className="hover:text-white font-medium">+91 92054 36796</a>
-              <span className="hidden sm:inline">&bull;</span>
-              <span>info@nidads.com</span>
+              <span className="hidden sm:inline text-blue-300">&bull;</span>
+              <a href="tel:+919205436796" className="hover:text-[#0284c7] font-medium transition-colors">+91 92054 36796</a>
+              <span className="hidden sm:inline text-blue-300">&bull;</span>
+              <a href="mailto:info@nidads.com" className="hover:text-[#0284c7] transition-colors">info@nidads.com</a>
             </div>
           </div>
 
-          <p className="text-[11px] text-gray-500 leading-relaxed text-center md:text-left">
-            Disclaimer: Program outcomes and salary hikes depend on student dedication, project submissions, technical assessment performance, and interview preparation. 100% placement support indicates continuous mentorship, profile optimization, and referral drives through our network of 500+ hiring partners.
+          <p className="text-[11px] text-slate-600 leading-relaxed text-center md:text-left">
+            Placement support includes ongoing mentorship, profile guidance and referral opportunities through our network of 500+ hiring partners. Career outcomes and salary growth depend on each learner&apos;s effort, project work, assessment results and interview preparation.
           </p>
 
-          <div className="pt-4 border-t border-[#152d4e]/40 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-gray-500">
-            <div className="text-center sm:text-left">&copy; {new Date().getFullYear()} National Institute of Data Analytics &amp; Data Science (NIDADS). All rights reserved.</div>
+          <div className="pt-4 border-t border-blue-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+            <div className="text-center sm:text-left">&copy; {new Date().getFullYear()} NIDADS - National Institute of Data Analytics &amp; Data Science. All rights reserved.</div>
             
             {/* Built-in Admin Lead Access */}
             <AdminLeadViewer />

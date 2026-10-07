@@ -102,15 +102,15 @@ export default function WhyBootcamp() {
               <p>&bull; 3-4 years long duration</p>
             </div>
 
-            <div className="p-4 rounded-xl bg-gradient-to-b from-[#38b6ff]/20 to-[#07111e] border border-[#38b6ff]/50 space-y-2 text-gray-200 shadow-xl shadow-[#38b6ff]/10">
-              <div className="font-bold text-[#38b6ff] text-sm flex items-center justify-between">
+            <div className="p-4 rounded-xl bg-[#e0f2fe] border border-[#7dd3fc] space-y-2 text-slate-700 shadow-xl shadow-[#38b6ff]/10">
+              <div className="font-bold text-[#102a43] text-sm flex items-center justify-between">
                 <span>NIDADS Job Bootcamp</span>
-                <span className="text-[10px] bg-[#38b6ff] text-[#050b14] px-2 py-0.5 rounded-full font-extrabold">RECOMMENDED</span>
+                <span className="text-[10px] bg-[#0284c7] text-white px-2 py-0.5 rounded-full font-extrabold">RECOMMENDED</span>
               </div>
-              <p className="text-white font-medium">&bull; 100% Industry-aligned hands-on stack</p>
-              <p className="text-white font-medium">&bull; Instant 24/7 1-on-1 doubt resolution</p>
-              <p className="text-white font-medium">&bull; 1:1 MAANG mock interviews &amp; resume Polish</p>
-              <p className="text-white font-medium">&bull; Direct placement drives across 500+ partner companies</p>
+              <p className="text-slate-700 font-medium">&bull; 100% Industry-aligned hands-on stack</p>
+              <p className="text-slate-700 font-medium">&bull; Instant 24/7 1-on-1 doubt resolution</p>
+              <p className="text-slate-700 font-medium">&bull; 1:1 MAANG mock interviews &amp; resume polish</p>
+              <p className="text-slate-700 font-medium">&bull; Direct placement drives across 500+ partner companies</p>
             </div>
 
           </div>

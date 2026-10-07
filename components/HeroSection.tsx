@@ -218,7 +218,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             {/* NIDADS Official Stats Strip (Visible here on Desktop) */}
             <div className="hidden lg:grid grid-cols-4 gap-3.5 pt-2">
               <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e] text-center hover:border-[#38b6ff]/40 transition-colors">
-                <div className="text-2xl font-extrabold text-[#38b6ff]">15,000+</div>
+                <div className="text-2xl font-extrabold text-[#38b6ff]">25,000+</div>
                 <div className="text-xs text-gray-400 font-medium mt-0.5">Students Trained</div>
               </div>
               <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e] text-center hover:border-[#38b6ff]/40 transition-colors">
@@ -496,7 +496,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             {/* Mobile Stats 2x2 */}
             <div className="grid grid-cols-2 gap-2 pt-1">
               <div className="p-3 rounded-xl bg-[#07111e] border border-[#152d4e] text-center">
-                <div className="text-xl font-extrabold text-[#38b6ff]">15,000+</div>
+                <div className="text-xl font-extrabold text-[#38b6ff]">25,000+</div>
                 <div className="text-[10px] text-gray-400 font-medium">Students Trained</div>
               </div>
               <div className="p-3 rounded-xl bg-[#07111e] border border-[#152d4e] text-center">

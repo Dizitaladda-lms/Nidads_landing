@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import NidadsLogo from '@/components/NidadsLogo';
 
 interface CertProps {
   onOpenModal: () => void;
@@ -71,14 +72,7 @@ export default function CertificationSection({ onOpenModal }: CertProps) {
               {/* Cyan Decor */}
               <div className="flex items-center justify-between border-b border-[#152d4e] pb-3 sm:pb-4 gap-2">
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                  <img
-                    src="https://www.nidads.com/Nidads-2.webp"
-                    alt="NIDADS Logo"
-                    className="h-6 sm:h-8 w-auto object-contain brightness-110 shrink-0"
-                    onError={(e) => {
-                      (e.target as HTMLElement).style.display = 'none';
-                    }}
-                  />
+                  <NidadsLogo size="certificate" />
                   <div className="min-w-0">
                     <div className="text-xs font-black tracking-wider text-white truncate">NIDADS ACADEMY</div>
                     <div className="text-[8px] sm:text-[9px] text-[#38b6ff] uppercase tracking-widest font-bold">Certificate of Excellence</div>

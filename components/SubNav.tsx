@@ -38,7 +38,10 @@ export default function SubNav({ onOpenModal }: SubNavProps) {
   }, []);
 
   return (
-    <div className="sticky top-14 sm:top-16 z-40 bg-[#050b14]/95 backdrop-blur border-y border-[#152d4e] shadow-lg">
+    <div
+      className="sub-navigation sticky top-14 sm:top-16 z-40 border-y shadow-sm"
+      style={{ backgroundColor: '#ffffff', borderColor: '#dbeafe' }}
+    >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between h-11 sm:h-12">
         {/* Horizontal scrollable nav items for mobile */}
         <div className="flex items-center gap-1 sm:gap-2 overflow-x-auto no-scrollbar py-1 text-xs sm:text-sm font-medium w-full sm:w-auto -mx-1 px-1">
@@ -48,10 +51,16 @@ export default function SubNav({ onOpenModal }: SubNavProps) {
               <a
                 key={item.href}
                 href={item.href}
+                data-active={isActive}
+                style={{
+                  backgroundColor: isActive ? '#e0f2fe' : 'transparent',
+                  borderColor: isActive ? '#7dd3fc' : 'transparent',
+                  color: isActive ? '#075985' : '#334155',
+                }}
                 className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full whitespace-nowrap transition-all text-[11px] sm:text-xs md:text-sm ${
                   isActive
-                    ? 'bg-[#38b6ff]/20 text-[#38b6ff] border border-[#38b6ff]/50 font-bold shadow-[0_0_12px_rgba(56,182,255,0.25)]'
-                    : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                    ? 'sub-navigation-link-active border font-semibold'
+                    : 'sub-navigation-link hover:bg-[#eff8ff]'
                 }`}
               >
                 {item.label}

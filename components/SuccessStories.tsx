@@ -45,7 +45,7 @@ export default function SuccessStories() {
         </div>
 
         {/* Video Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8 max-w-5xl mx-auto">
           {videoReviews.map((item, idx) => (
             <div
               key={idx}
@@ -65,19 +65,19 @@ export default function SuccessStories() {
               </div>
 
               {/* Card Meta & Details */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-3 bg-[#07111e]">
+              <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-[#07111e]">
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#38b6ff]/15 border border-[#38b6ff]/30 text-[#38b6ff] font-bold text-[10px] sm:text-xs">
+                  <div className="flex flex-wrap items-center justify-between gap-1.5 mb-2">
+                    <span className="inline-block px-2 py-0.5 rounded-full bg-[#38b6ff]/15 border border-[#38b6ff]/30 text-[#38b6ff] font-bold text-[9px] sm:text-xs">
                       {item.badge}
                     </span>
                     <span className="text-xs text-amber-400 font-bold">★ 5.0 / 5.0</span>
                   </div>
-                  <h3 className="text-base font-bold text-white leading-snug">{item.title}</h3>
-                  <p className="text-xs text-gray-400 mt-1">{item.subtitle}</p>
+                  <h3 className="text-sm sm:text-base font-bold text-white leading-snug">{item.title}</h3>
+                  <p className="text-[10px] sm:text-xs text-gray-400 mt-1">{item.subtitle}</p>
                 </div>
 
-                <div className="pt-3 border-t border-[#152d4e] flex items-center justify-between text-xs text-gray-400">
+                <div className="pt-3 border-t border-[#152d4e] flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-xs text-gray-400">
                   <span className="font-semibold text-gray-300">NIDADS Alumnus</span>
                   <span className="text-[#38b6ff] font-medium">Verified Review</span>
                 </div>

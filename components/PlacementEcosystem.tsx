@@ -84,7 +84,7 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
         <div className="mt-12 rounded-2xl bg-gradient-to-r from-[#0a1626] via-[#07111e] to-[#0369a1]/30 border border-[#38b6ff]/40 p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-2 text-center md:text-left">
             <h3 className="text-lg sm:text-xl font-bold text-white">
-              98% Placement Rate Across 15,000+ Enrolled Learners
+              98% Placement Rate Across 25,000+ Enrolled Learners
             </h3>
             <p className="text-xs sm:text-sm text-gray-300 max-w-2xl">
               From fresh graduates securing their first 6-12 LPA tech job to experienced professionals achieving senior 18-28 LPA positions.
