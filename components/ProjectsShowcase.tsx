@@ -69,11 +69,11 @@ export default function ProjectsShowcase() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {projects.map((proj, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-[#07111e] border border-[#152d4e] p-6 flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10"
+              className="rounded-2xl bg-[#07111e] border border-[#152d4e] p-3 sm:p-6 flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -82,7 +82,7 @@ export default function ProjectsShowcase() {
                   </span>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-white mb-2.5 hover:text-[#38b6ff] transition-colors">
+                <h3 className="text-sm sm:text-lg font-bold text-white mb-2.5 hover:text-[#38b6ff] transition-colors">
                   {proj.title}
                 </h3>
 

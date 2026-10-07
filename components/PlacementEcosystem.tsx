@@ -51,11 +51,11 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
         </div>
 
         {/* 4 Step Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className="relative rounded-2xl bg-[#0a1626] border border-[#152d4e] p-6 flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10"
+              className="relative rounded-2xl bg-[#0a1626] border border-[#152d4e] p-3 sm:p-6 flex flex-col justify-between hover:border-[#38b6ff]/60 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-[#38b6ff]/10"
             >
               <div>
                 <div className="mb-4">
@@ -64,7 +64,7 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-white mb-2">
+                <h3 className="text-sm sm:text-base font-bold text-white mb-2">
                   {item.title}
                 </h3>
 
