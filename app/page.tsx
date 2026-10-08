@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import SubNav from '@/components/SubNav';
 import HiringPartners from '@/components/HiringPartners';
+import OurEnvironment from '@/components/OurEnvironment';
 import WhyBootcamp from '@/components/WhyBootcamp';
 import Curriculum from '@/components/Curriculum';
 import ProjectsShowcase from '@/components/ProjectsShowcase';
@@ -53,7 +54,10 @@ export default function LandingPage() {
       {/* 4. Hiring Partners Logo Strip (500+ Enterprises) */}
       <HiringPartners />
 
-      {/* 5. Why Choose NIDADS */}
+      {/* 5. Learning environment photo strip */}
+      <OurEnvironment />
+
+      {/* 6. Why Choose NIDADS */}
       <WhyBootcamp />
 
       {/* 6. AI-Infused Curriculum Section */}

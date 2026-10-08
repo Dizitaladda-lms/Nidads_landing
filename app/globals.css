@@ -202,3 +202,44 @@ textarea::placeholder {
   background: #bfdbfe;
   color: #16324f;
 }
+
+.environment-marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+.environment-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: environment-marquee 42s linear infinite;
+}
+
+.environment-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.environment-marquee-reverse {
+  animation-direction: reverse;
+}
+
+.environment-photo-group {
+  display: flex;
+  flex: none;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@keyframes environment-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .environment-marquee-track {
+    animation: none;
+  }
+}
