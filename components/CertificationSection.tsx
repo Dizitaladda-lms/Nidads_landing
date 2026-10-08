@@ -70,17 +70,25 @@ export default function CertificationSection({ onOpenModal }: CertProps) {
             <div className="relative rounded-2xl bg-gradient-to-br from-[#0c1b2f] via-[#07111e] to-[#0a1626] border-2 border-[#38b6ff]/40 p-4 sm:p-7 shadow-2xl shadow-black/80 space-y-3 sm:space-y-4">
               
               {/* Cyan Decor */}
-              <div className="flex items-center justify-between border-b border-[#152d4e] pb-3 sm:pb-4 gap-2">
-                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              <div className="flex items-start justify-between border-b border-[#152d4e] pb-3 sm:pb-4 gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
                   <NidadsLogo size="certificate" />
                   <div className="min-w-0">
                     <div className="text-xs font-black tracking-wider text-white truncate">NIDADS ACADEMY</div>
                     <div className="text-[8px] sm:text-[9px] text-[#38b6ff] uppercase tracking-widest font-bold">Certificate of Excellence</div>
                   </div>
                 </div>
-                <span className="text-[10px] sm:text-xs font-mono font-bold text-[#38b6ff] border border-[#38b6ff]/40 px-2 py-0.5 rounded shrink-0">
-                  VERIFIED
-                </span>
+
+                <div className="relative shrink-0 ml-auto mt-1">
+                  <div className="absolute -left-2 top-1/2 -translate-y-1/2 h-8 w-8 rotate-45 rounded-md bg-[#ff8a3d] shadow-lg shadow-[#ff8a3d]/30" />
+                  <div className="relative rounded-xl border-2 border-[#38b6ff] bg-white/95 px-2 py-1.5 text-center shadow-md shadow-[#38b6ff]/15">
+                    <div className="text-[8px] sm:text-[9px] font-black uppercase tracking-[0.18em] text-[#1a2d4d]">NI...</div>
+                    <div className="mt-0.5 text-[8px] sm:text-[9px] font-black uppercase leading-[1.1] text-[#1a2d4d]">
+                      Certified <br />
+                      of Excellence
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Certificate Inner Text */}

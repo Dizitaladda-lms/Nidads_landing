@@ -17,14 +17,8 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2">
         {/* Brand Logo - Self-contained */}
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 group shrink-0">
+        <a href="#top" className="flex items-center group shrink-0">
           <NidadsLogo size="navbar" />
-          <div className="flex flex-col">
-            <div className="flex items-center gap-1 sm:gap-1.5">
-              <span className="text-base sm:text-xl font-black tracking-tight text-white"></span>
-            </div>
-
-          </div>
         </a>
 
         {/* Center Trust Metric - Desktop only */}

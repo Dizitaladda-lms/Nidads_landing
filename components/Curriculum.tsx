@@ -212,19 +212,7 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
 
                 {/* Accordion Body */}
                 {isOpen && (
-                  <div className="px-4 pb-5 sm:px-6 sm:pb-6 pt-2 border-t border-[#152d4e] space-y-2.5 sm:space-y-3 bg-[#050b14]/50">
-                    <div className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1 sm:mb-2">
-                      Key Topics Covered:
-                    </div>
-                    <ul className="space-y-2 sm:space-y-2.5">
-                      {mod.topics.map((topic, tIdx) => (
-                        <li key={tIdx} className="flex items-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-gray-300">
-                          <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                          <span>{topic}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <div className="px-4 pb-5 sm:px-6 sm:pb-6 pt-2 border-t border-[#152d4e] bg-[#050b14]/50" />
                 )}
               </div>
             );
