@@ -198,10 +198,15 @@ textarea::placeholder {
   color: #8296a9;
 }
 
+.navbar-brand-banner {
+  color: #ffffff !important;
+}
+
 .hero-lead-form[class*="bg-gradient-to-"] {
   background-image: linear-gradient(135deg, #0a1626 0%, #07111e 100%) !important;
   background-color: #07111e !important;
   color: #e2e8f0 !important;
+  border-color: #009bd7 !important;
 }
 
 .hero-lead-form [class~="text-white"],
@@ -217,7 +222,7 @@ textarea::placeholder {
 
 .hero-lead-form [class~="text-[#38b6ff]"],
 .hero-lead-form [class~="text-[#46d9ff]"] {
-  color: #38bdf8 !important;
+  color: #009bd7 !important;
 }
 
 .hero-lead-form [class~="text-emerald-400"],

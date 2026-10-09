@@ -240,7 +240,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
           {/* 2. Form Column: visible immediately on mobile and beside the headline on desktop. */}
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
-            <div className="hero-lead-form relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#38b6ff]/60 form-attract-pulse">
+            <div className="hero-lead-form relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#009bd7]/70 form-attract-pulse">
               
               <div className="text-center mb-3 sm:mb-5">
                 <h3 className="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
