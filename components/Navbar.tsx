@@ -11,7 +11,7 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 w-full bg-transparent border-b border-[#152d4e] transition-all">
       {/* Top micro-banner for urgency - responsive text */}
-      <div className="bg-gradient-to-r from-[#164e72] via-[#17618a] to-[#1d6b91] text-slate-100 text-[13px] sm:text-sm font-semibold py-2 px-2 text-center tracking-normal">
+      <div className="bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#1d4ed8] text-slate-100 text-[13px] sm:text-sm font-semibold py-2 px-2 text-center tracking-normal">
         Next Batch Starting <strong>Sunday</strong> &bull; Online &amp; Offline Batches Live
       </div>
 
