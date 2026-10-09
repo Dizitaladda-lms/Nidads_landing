@@ -242,13 +242,6 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
             <div className="hero-lead-form relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#38b6ff]/60 form-attract-pulse">
               
-              {/* Animated Shimmer Badge above form */}
-              <div className="relative overflow-hidden inline-flex items-center gap-1.5 bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] text-white font-black text-[11px] sm:text-xs uppercase px-3.5 py-1.5 rounded-full shadow-lg shadow-[#38b6ff]/40 mb-3 -mt-6 sm:-mt-8 mx-auto table">
-                <span className="badge-shimmer"></span>
-                <span className="w-2 h-2 rounded-full bg-white shrink-0 animate-ping"></span>
-                <span>Fast-Filling Batch &bull; Free Career Counselling</span>
-              </div>
-
               <div className="text-center mb-3 sm:mb-5">
                 <h3 className="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
                   Talk to a Senior Career Advisor
