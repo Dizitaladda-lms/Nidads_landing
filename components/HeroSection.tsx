@@ -175,7 +175,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             </div>
 
             {/* Main NIDADS Punchy Title */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.2]">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.2]">
               Master <span className="text-[#38b6ff]">Data Science</span> &amp; <br className="hidden xs:inline" />
               <span className="text-white">Data Analytics</span> with{' '}
               <span className="bg-gradient-to-r from-[#38b6ff] via-[#46d9ff] to-[#5478ff] bg-clip-text text-transparent">
@@ -184,7 +184,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             </h1>
 
             {/* Sub-Headline */}
-            <p className="text-xs sm:text-base text-gray-300 max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 max-w-2xl leading-relaxed">
               India&apos;s premier <strong>Job Bootcamp with Placement Support</strong> — covering Python, SQL, Machine Learning, Power BI, and modern AI workflows through live industry projects for beginners &amp; working professionals.
             </p>
 
@@ -240,7 +240,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
           {/* 2. Form Column: visible immediately on mobile and beside the headline on desktop. */}
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
-            <div className="relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#38b6ff]/60 form-attract-pulse">
+            <div className="hero-lead-form relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#38b6ff]/60 form-attract-pulse">
               
               {/* Animated Shimmer Badge above form */}
               <div className="relative overflow-hidden inline-flex items-center gap-1.5 bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] text-white font-black text-[11px] sm:text-xs uppercase px-3.5 py-1.5 rounded-full shadow-lg shadow-[#38b6ff]/40 mb-3 -mt-6 sm:-mt-8 mx-auto table">
@@ -253,7 +253,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                 <h3 className="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
                   Talk to a Senior Career Advisor
                 </h3>
-                <p className="text-xs text-gray-300 mt-1">
+                <p className="text-sm text-gray-300 mt-1">
                   Get personalized roadmap + detailed curriculum delivered on WhatsApp
                 </p>
                 {/* Social proof urgency counter */}
@@ -341,7 +341,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                 <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Full Name *</label>
+                    <label className="block text-sm font-semibold text-gray-300 mb-1">Full Name *</label>
                     <input
                       type="text"
                       required
@@ -354,7 +354,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Email */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Email Address *</label>
+                    <label className="block text-sm font-semibold text-gray-300 mb-1">Email Address *</label>
                     <input
                       type="email"
                       required
@@ -367,7 +367,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Phone Number with India Code */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Mobile Number *</label>
+                    <label className="block text-sm font-semibold text-gray-300 mb-1">Mobile Number *</label>
                     <div className="relative flex items-center">
                       <div className="absolute left-3 flex items-center text-xs text-gray-400 font-medium pointer-events-none">
                         <span>+91</span>
@@ -386,7 +386,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Select Course */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Select Course *</label>
+                    <label className="block text-sm font-semibold text-gray-300 mb-1">Select Course *</label>
                     <select
                       value={formData.course}
                       onChange={(e) => setFormData({ ...formData, course: e.target.value })}
@@ -409,7 +409,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Background / Current Status */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-300 mb-1">Background *</label>
+                    <label className="block text-sm font-semibold text-gray-300 mb-1">Background *</label>
                     <select
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}

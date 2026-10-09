@@ -198,6 +198,52 @@ textarea::placeholder {
   color: #8296a9;
 }
 
+.hero-lead-form[class*="bg-gradient-to-"] {
+  background-image: linear-gradient(135deg, #0a1626 0%, #07111e 100%) !important;
+  background-color: #07111e !important;
+  color: #e2e8f0 !important;
+}
+
+.hero-lead-form [class~="text-white"],
+.hero-lead-form [class~="text-slate-100"],
+.hero-lead-form [class~="text-gray-100"],
+.hero-lead-form [class~="text-gray-200"],
+.hero-lead-form [class~="text-gray-300"],
+.hero-lead-form [class~="text-gray-400"],
+.hero-lead-form [class~="text-gray-500"],
+.hero-lead-form [class~="text-gray-600"] {
+  color: #e2e8f0 !important;
+}
+
+.hero-lead-form [class~="text-[#38b6ff]"],
+.hero-lead-form [class~="text-[#46d9ff]"] {
+  color: #38bdf8 !important;
+}
+
+.hero-lead-form [class~="text-emerald-400"],
+.hero-lead-form [class~="text-emerald-200"] {
+  color: #6ee7b7 !important;
+}
+
+.hero-lead-form [class~="text-amber-400"],
+.hero-lead-form [class~="text-amber-200"],
+.hero-lead-form [class~="text-[#ffbf5f]"] {
+  color: #fcd34d !important;
+}
+
+.hero-lead-form input,
+.hero-lead-form select,
+.hero-lead-form textarea {
+  color: #f8fafc !important;
+  background-color: #050b14 !important;
+  border-color: #29415f !important;
+}
+
+.hero-lead-form input::placeholder,
+.hero-lead-form textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
 ::selection {
   background: #bfdbfe;
   color: #16324f;
