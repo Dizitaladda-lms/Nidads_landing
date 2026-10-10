@@ -16,7 +16,6 @@ import FAQSection from '@/components/FAQSection';
 import LeadModal from '@/components/LeadModal';
 import MobileStickyBar from '@/components/MobileStickyBar';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import AdminLeadViewer from '@/components/AdminLeadViewer';
 import NidadsLogo from '@/components/NidadsLogo';
 
 export default function LandingPage() {
@@ -114,7 +113,7 @@ export default function LandingPage() {
           <div className="flex items-center justify-center gap-6 text-xs text-gray-400 pt-4">
             <span>100% Placement Support</span>
             <span>&bull;</span>
-            <span>Flexible Weekend &amp; Evening Batches</span>
+            <span>Weekdays &amp; Weekend Batches</span>
             <span>&bull;</span>
             <span>Online &amp; Classroom Batches</span>
           </div>
@@ -143,9 +142,6 @@ export default function LandingPage() {
 
           <div className="pt-4 border-t border-blue-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
             <div className="text-center sm:text-left">&copy; {new Date().getFullYear()} NIDADS - National Institute of Data Analytics &amp; Data Science. All rights reserved.</div>
-            
-            {/* Built-in Admin Lead Access */}
-            <AdminLeadViewer />
           </div>
         </div>
       </footer>

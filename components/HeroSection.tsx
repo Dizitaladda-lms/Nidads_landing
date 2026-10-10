@@ -199,7 +199,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
                 <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
                 <span className="text-xs sm:text-sm text-gray-200 font-medium">
-                  <strong>24/7 1-on-1 Doubt Support</strong> via Live Chat &amp; Screen Share
+                  <strong>1-on-1 Doubt Support</strong> 
                 </span>
               </div>
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
@@ -470,7 +470,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
                 <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
                 <span className="text-xs text-gray-200 font-medium">
-                  <strong>24/7 1-on-1 Doubt Support</strong> via Live Chat &amp; Screen Share
+                  <strong>24/7 1-on-1 Doubt Support</strong> 
                 </span>
               </div>
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">

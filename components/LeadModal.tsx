@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import NidadsLogo from '@/components/NidadsLogo';
 import { captureAttribution } from '@/lib/attribution';
 
 interface LeadModalProps {
@@ -251,6 +252,27 @@ export default function LeadModal({
           </div>
         ) : (
           <div>
+            <div className="mb-4 rounded-xl bg-gradient-to-r from-[#009bd7] to-[#38b6ff] px-3 py-2 text-center shadow-md shadow-[#38b6ff]/20">
+              <div className="text-[11px] sm:text-[12px] font-bold text-white tracking-normal">
+                Next Batch Starting <span className="font-extrabold">Sunday</span> &bull; Online &amp; Offline Batches Live
+              </div>
+            </div>
+
+            <div className="mb-4 rounded-xl border border-gray-200 bg-white p-2.5 shadow-sm">
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0 overflow-hidden">
+                  <NidadsLogo size="navbar" />
+                </div>
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="shrink-0 rounded-lg bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] px-3 py-1.5 text-[10px] sm:text-[11px] font-bold text-white shadow-md shadow-sky-500/25 transition-all hover:scale-[1.02]"
+                >
+                  Request Callback
+                </button>
+              </div>
+            </div>
+
             <div className="text-center mb-4 sm:mb-6 pr-6">
               <div className="inline-block px-2.5 py-0.5 rounded-full bg-[#38b6ff]/10 border border-[#38b6ff]/30 text-[10px] sm:text-[11px] font-bold text-[#38b6ff] mb-1.5">
                 Next Cohort Starting Soon
