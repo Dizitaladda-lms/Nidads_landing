@@ -240,35 +240,38 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
           {/* 2. Form Column: visible immediately on mobile and beside the headline on desktop. */}
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
-            <div className="hero-lead-form relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#009bd7]/70 form-attract-pulse">
+            <div className="hero-lead-form relative rounded-3xl bg-white p-5 sm:p-8 border border-slate-200/90 shadow-[0_20px_50px_rgba(15,23,42,0.10)]">
               
-              <div className="text-center mb-3 sm:mb-5">
-                <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-                  Talk to a Senior Career Advisor
+              <div className="text-center mb-4 sm:mb-6">
+                <div className="inline-block px-3.5 py-1 rounded-full bg-purple-100/70 border border-purple-200 text-purple-900 text-xs font-black uppercase tracking-wider mb-2">
+                  LIMITED SEATS!
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  Speak To Our Counsellor
                 </h3>
-                <p className="text-sm sm:text-base text-gray-300 mt-1">
-                  Get personalized roadmap + detailed curriculum delivered on WhatsApp
+                <p className="text-sm sm:text-base text-slate-500 mt-1">
+                  Fill details to download curriculum &amp; speak to experts.
                 </p>
                 {/* Social proof urgency counter */}
-                <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] text-emerald-400 font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <div className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs text-emerald-700 font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span>14 Candidates Requested Call in Last 2 Hours</span>
                 </div>
               </div>
 
               {submitted ? (
                 <div className="py-6 sm:py-8 text-center space-y-4">
-                  <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
+                  <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-100 text-emerald-600 border border-emerald-200 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
                     ✓
                   </div>
-                  <h4 className="text-lg sm:text-xl font-bold text-white">Thank You! Request Received</h4>
-                  <p className="text-xs sm:text-sm text-gray-300">
+                  <h4 className="text-xl sm:text-2xl font-bold text-slate-900">Thank You! Request Received</h4>
+                  <p className="text-sm text-slate-600">
                     Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.
                   </p>
 
                   {/* Post-submission Brochure Choice & Download Buttons */}
-                  <div className="pt-2 space-y-3 bg-[#050b14]/80 p-4 rounded-xl border border-[#162c4d]">
-                    <p className="text-xs font-bold text-[#38b6ff] uppercase tracking-wider">
+                  <div className="pt-2 space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                    <p className="text-xs font-bold text-[#0284c7] uppercase tracking-wider">
                       Select Course Brochure to Download:
                     </p>
                     <div className="grid grid-cols-1 gap-2.5">
@@ -277,26 +280,26 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         download="NIDADS-Data-Science-Course-Brochure.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.01] cursor-pointer"
+                        className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-sm shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.01] cursor-pointer"
                       >
                         <span className="flex items-center gap-2">
                           <span>📘</span>
                           <span>Data Science &amp; AI Brochure</span>
                         </span>
-                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download PDF</span>
+                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-xs font-extrabold">Download PDF</span>
                       </a>
                       <a
                         href="/nidads-data-analytics-brochure.pdf"
                         download="NIDADS-Data-Analytics-Course-Brochure.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs sm:text-sm shadow-md shadow-teal-500/20 transition-all hover:scale-[1.01] cursor-pointer"
+                        className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-sm shadow-md shadow-teal-500/20 transition-all hover:scale-[1.01] cursor-pointer"
                       >
                         <span className="flex items-center gap-2">
                           <span>📊</span>
                           <span>Data Analytics &amp; AI Brochure</span>
                         </span>
-                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download PDF</span>
+                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-xs font-extrabold">Download PDF</span>
                       </a>
                       <button
                         type="button"
@@ -312,58 +315,58 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                           dl('/nidads-data-science-brochure.pdf', 'NIDADS-Data-Science-Course-Brochure.pdf');
                           setTimeout(() => dl('/nidads-data-analytics-brochure.pdf', 'NIDADS-Data-Analytics-Course-Brochure.pdf'), 600);
                         }}
-                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.01] cursor-pointer w-full"
+                        className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.01] cursor-pointer w-full"
                       >
                         <span className="flex items-center gap-2">
                           <span>📚</span>
                           <span>Download Both (Science + Analytics)</span>
                         </span>
-                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-[11px] font-extrabold">Download All</span>
+                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-xs font-extrabold">Download All</span>
                       </button>
                     </div>
                   </div>
 
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-xs text-[#38b6ff] underline hover:text-white pt-2 cursor-pointer inline-block"
+                    className="text-xs text-[#0284c7] font-semibold underline hover:text-slate-900 pt-2 cursor-pointer inline-block"
                   >
                     Submit another query
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
+                <form onSubmit={handleSubmit} className="space-y-3.5">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-1">Full Name *</label>
+                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Full Name *</label>
                     <input
                       type="text"
                       required
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-1">Email Address *</label>
+                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Email Address *</label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. rahul.sharma@gmail.com"
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
                     />
                   </div>
 
-                  {/* Phone Number with India Code */}
+                  {/* WhatsApp Mobile Number with +91 Prefix */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-1">Mobile Number *</label>
-                    <div className="relative flex items-center">
-                      <div className="absolute left-3 flex items-center text-xs text-gray-400 font-medium pointer-events-none">
-                        <span>+91</span>
+                    <label className="block text-sm font-bold text-slate-800 mb-1.5">WhatsApp Mobile Number *</label>
+                    <div className="flex items-center">
+                      <div className="bg-purple-50/70 border border-r-0 border-slate-200 rounded-l-xl px-3.5 py-3 text-slate-700 text-base font-bold flex items-center select-none">
+                        +91
                       </div>
                       <input
                         type="tel"
@@ -371,19 +374,19 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         pattern="[0-9]{10}"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
-                        placeholder="9876543210"
-                        className="w-full pl-12 sm:pl-14 pr-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] focus:ring-1 focus:ring-[#38b6ff] transition-all placeholder:text-gray-500"
+                        placeholder="10-digit phone number"
+                        className="w-full px-4 py-3 rounded-r-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
                       />
                     </div>
                   </div>
 
                   {/* Select Course */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-1">Select Course *</label>
+                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Select Course *</label>
                     <select
                       value={formData.course}
                       onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all font-medium cursor-pointer"
                     >
                       <option value="Diploma in Data Science & AI">Diploma in Data Science &amp; AI</option>
                       <option value="Diploma in Data Analytics & AI | Get Job-Ready">Diploma in Data Analytics &amp; AI | Get Job-Ready</option>
@@ -402,11 +405,11 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Background / Current Status */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-300 mb-1">Background *</label>
+                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Current Background *</label>
                     <select
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-lg bg-[#050b14] border border-[#162c4d] text-white text-base sm:text-sm focus:outline-none focus:border-[#38b6ff] transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all font-medium cursor-pointer"
                     >
                       <option value="Working Professional - Tech">Working Professional (Tech)</option>
                       <option value="Working Professional - Non Tech">Working Professional (Non-Tech)</option>
@@ -418,19 +421,32 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                     </select>
                   </div>
 
+                  {/* WhatsApp Syllabus Consent Checkbox */}
+                  <div className="flex items-start gap-2.5 pt-1">
+                    <input
+                      type="checkbox"
+                      id="hero_whatsapp_consent"
+                      defaultChecked
+                      className="mt-1 h-4 w-4 rounded border-slate-300 text-[#0284c7] focus:ring-[#0284c7] cursor-pointer"
+                    />
+                    <label htmlFor="hero_whatsapp_consent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
+                      Send me 2026 AI-integrated syllabus PDF &amp; fee discounts on WhatsApp.
+                    </label>
+                  </div>
+
                   {/* Error / Rate limit Alert */}
                   {errorMessage && (
-                    <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs flex items-start gap-2 animate-pulse">
+                    <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-start gap-2 animate-pulse">
                       <span className="shrink-0 text-sm font-bold">⚠️</span>
                       <span className="leading-relaxed">{errorMessage}</span>
                     </div>
                   )}
 
-                  {/* CTA Submit Button with Animated Glow */}
+                  {/* CTA Submit Button */}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-2 py-3.5 px-4 sm:px-6 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-extrabold text-base sm:text-lg button-attract-glow transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center cursor-pointer"
+                    className="w-full mt-3 py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-black text-base sm:text-lg shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center cursor-pointer"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">
@@ -438,16 +454,16 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         Submitting details...
                       </span>
                     ) : (
-                      <span>Get Free Counselling &amp; Syllabus</span>
+                      <span>Book A Free Session</span>
                     )}
                   </button>
 
                   {/* Trust Footer */}
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 pt-1">
-                    <span className="text-gray-300 font-medium">100% Privacy</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-600" />
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-slate-500 pt-1">
+                    <span className="text-slate-600 font-medium">100% Privacy</span>
+                    <span className="w-1 h-1 rounded-full bg-slate-300" />
                     <span>No Spam Calls</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-600" />
+                    <span className="w-1 h-1 rounded-full bg-slate-300" />
                     <span>Instant WhatsApp Brochure</span>
                   </div>
 

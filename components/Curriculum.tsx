@@ -250,15 +250,15 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
           })}
         </AutoCarousel>
 
-        {/* Bottom Banner - Stacks on mobile */}
-        <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#0369a1]/30 via-[#07111e] to-[#050b14] border border-[#38b6ff]/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
-          <div>
-            <h4 className="text-sm sm:text-base font-bold text-white">Want the syllabus PDF?</h4>
-            <p className="text-xs text-gray-300 mt-0.5">Get projects, assignment schedules &amp; tools list delivered instantly on WhatsApp.</p>
+        {/* Bottom Banner - Clean White Card - Stacks on mobile */}
+        <div className="mt-6 sm:mt-8 p-5 sm:p-7 rounded-2xl bg-white border border-slate-200/90 shadow-md shadow-slate-200/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 text-center sm:text-left">
+          <div className="space-y-1">
+            <h4 className="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">Want the syllabus PDF?</h4>
+            <p className="text-xs sm:text-sm text-slate-600 font-medium">Get projects, assignment schedules &amp; tools list delivered instantly on WhatsApp.</p>
           </div>
           <button
             onClick={onDownloadSyllabus}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#38b6ff]/20 transition-all cursor-pointer whitespace-nowrap shrink-0"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0"
           >
             Download Curriculum PDF
           </button>

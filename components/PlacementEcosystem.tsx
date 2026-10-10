@@ -82,18 +82,18 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
         </AutoCarousel>
 
         {/* Placement Track Record Banner */}
-        <div className="mt-12 rounded-2xl bg-gradient-to-r from-[#0a1626] via-[#07111e] to-[#0369a1]/30 border border-[#38b6ff]/40 p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-12 rounded-2xl bg-white border border-slate-200/90 shadow-md shadow-slate-200/50 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <h3 className="text-lg sm:text-xl font-bold text-white">
+            <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
               98% Placement Rate Across 25,000+ Enrolled Learners
             </h3>
-            <p className="text-xs sm:text-sm text-gray-300 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl font-medium">
               From fresh graduates securing their first 6-12 LPA tech job to experienced professionals achieving senior 18-28 LPA positions.
             </p>
           </div>
           <button
             onClick={onOpenModal}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-lg shadow-[#38b6ff]/25 whitespace-nowrap transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-sky-500/25 whitespace-nowrap transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0"
           >
             Speak to Placement Cell
           </button>
