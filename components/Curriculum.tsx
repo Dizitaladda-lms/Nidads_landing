@@ -211,36 +211,20 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
                 {/* Accordion Body */}
                 {isOpen && (
                   <div className="px-4 pb-5 sm:px-6 sm:pb-6 pt-3 border-t border-[#152d4e] bg-[#050b14]/50">
-                    <div className="grid gap-4 lg:grid-cols-[1.25fr_0.75fr]">
-                      <div>
-                        <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#38b6ff]">
-                          Learning outcomes
-                        </p>
-                        <ul className="mt-3 space-y-2.5">
-                          {mod.topics.map((topic, topicIndex) => (
-                            <li key={topicIndex} className="flex items-start gap-2 text-xs sm:text-sm text-gray-200 leading-relaxed">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#38b6ff]" />
-                              <span>{topic}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="rounded-xl border border-[#152d4e] bg-[#0a1626] p-3 sm:p-4">
-                        <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">
-                          Tools covered
-                        </p>
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          {mod.tools.map((tool, toolIndex) => (
-                            <span
-                              key={toolIndex}
-                              className="inline-flex items-center gap-1.5 rounded-full border border-[#38b6ff]/20 bg-[#0d1d2f] px-2 py-1 text-[9px] sm:text-[10px] font-medium text-gray-200"
-                            >
-                              {toolDomains[tool] && <BrandLogo name={tool} domain={toolDomains[tool]} size={14} />}
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
+                    <div className="rounded-xl border border-[#152d4e] bg-[#0a1626] p-3 sm:p-4">
+                      <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">
+                        Tools covered
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {mod.tools.map((tool, toolIndex) => (
+                          <span
+                            key={toolIndex}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-[#38b6ff]/20 bg-[#0d1d2f] px-2 py-1 text-[9px] sm:text-[10px] font-medium text-gray-200"
+                          >
+                            {toolDomains[tool] && <BrandLogo name={tool} domain={toolDomains[tool]} size={14} />}
+                            {tool}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
