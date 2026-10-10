@@ -240,38 +240,38 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
           {/* 2. Form Column: visible immediately on mobile and beside the headline on desktop. */}
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
-            <div className="hero-lead-form relative rounded-3xl bg-white p-5 sm:p-8 border border-slate-200/90 shadow-[0_20px_50px_rgba(15,23,42,0.10)]">
+            <div className="hero-lead-form-dark relative rounded-3xl bg-[#07111e] p-5 sm:p-8 border border-[#1e3c66] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
               
               <div className="text-center mb-4 sm:mb-6">
-                <div className="inline-block px-3.5 py-1 rounded-full bg-purple-100/70 border border-purple-200 text-purple-900 text-xs font-black uppercase tracking-wider mb-2">
+                <div className="inline-block px-3.5 py-1 rounded-full bg-[#38b6ff]/15 border border-[#38b6ff]/40 text-[#38b6ff] text-xs font-black uppercase tracking-wider mb-2">
                   LIMITED SEATS!
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                   Speak To Our Counsellor
                 </h3>
-                <p className="text-sm sm:text-base text-slate-500 mt-1">
+                <p className="lead-form-subtext text-sm sm:text-base text-gray-300 mt-1">
                   Fill details to download curriculum &amp; speak to experts.
                 </p>
                 {/* Social proof urgency counter */}
-                <div className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs text-emerald-700 font-semibold">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <div className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-xs text-emerald-300 font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span>14 Candidates Requested Call in Last 2 Hours</span>
                 </div>
               </div>
 
               {submitted ? (
                 <div className="py-6 sm:py-8 text-center space-y-4">
-                  <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-100 text-emerald-600 border border-emerald-200 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
+                  <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
                     ✓
                   </div>
-                  <h4 className="text-xl sm:text-2xl font-bold text-slate-900">Thank You! Request Received</h4>
-                  <p className="text-sm text-slate-600">
+                  <h4 className="text-xl sm:text-2xl font-bold text-white">Thank You! Request Received</h4>
+                  <p className="text-sm text-gray-300">
                     Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.
                   </p>
 
                   {/* Post-submission Brochure Choice & Download Buttons */}
-                  <div className="pt-2 space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                    <p className="text-xs font-bold text-[#0284c7] uppercase tracking-wider">
+                  <div className="pt-2 space-y-3 bg-[#050b14]/80 p-4 rounded-2xl border border-[#162c4d]">
+                    <p className="text-xs font-bold text-[#38b6ff] uppercase tracking-wider">
                       Select Course Brochure to Download:
                     </p>
                     <div className="grid grid-cols-1 gap-2.5">
@@ -328,7 +328,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-xs text-[#0284c7] font-semibold underline hover:text-slate-900 pt-2 cursor-pointer inline-block"
+                    className="text-xs text-[#38b6ff] font-semibold underline hover:text-white pt-2 cursor-pointer inline-block"
                   >
                     Submit another query
                   </button>
@@ -337,35 +337,35 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                 <form onSubmit={handleSubmit} className="space-y-3.5">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Full Name *</label>
+                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Full Name *</label>
                     <input
                       type="text"
                       required
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Email Address *</label>
+                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Email Address *</label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. rahul.sharma@gmail.com"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
                     />
                   </div>
 
                   {/* WhatsApp Mobile Number with +91 Prefix */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-800 mb-1.5">WhatsApp Mobile Number *</label>
+                    <label className="block text-sm font-bold text-gray-200 mb-1.5">WhatsApp Mobile Number *</label>
                     <div className="flex items-center">
-                      <div className="bg-purple-50/70 border border-r-0 border-slate-200 rounded-l-xl px-3.5 py-3 text-slate-700 text-base font-bold flex items-center select-none">
+                      <div className="bg-[#0d1f35] border border-r-0 border-[#162c4d] rounded-l-xl px-3.5 py-3 text-[#38b6ff] text-base font-bold flex items-center select-none">
                         +91
                       </div>
                       <input
@@ -375,49 +375,49 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
                         placeholder="10-digit phone number"
-                        className="w-full px-4 py-3 rounded-r-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
+                        className="w-full px-4 py-3 rounded-r-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
                       />
                     </div>
                   </div>
 
                   {/* Select Course */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Select Course *</label>
+                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Select Course *</label>
                     <select
                       value={formData.course}
                       onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all font-medium cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all font-medium cursor-pointer"
                     >
-                      <option value="Diploma in Data Science & AI">Diploma in Data Science &amp; AI</option>
-                      <option value="Diploma in Data Analytics & AI | Get Job-Ready">Diploma in Data Analytics &amp; AI | Get Job-Ready</option>
-                      <option value="Advanced Certificate in Data Science & AI Program">Advanced Certificate in Data Science &amp; AI Program</option>
-                      <option value="Advanced Certificate in Data Analytics & AI Program">Advanced Certificate in Data Analytics &amp; AI Program</option>
-                      <option value="Certificate in Data Science & AI">Certificate in Data Science &amp; AI</option>
-                      <option value="Certificate in Data Analytics & AI">Certificate in Data Analytics &amp; AI</option>
-                      <option value="Applied Data Analytics with Python & SQL">Applied Data Analytics with Python &amp; SQL</option>
-                      <option value="Business Intelligence with Power BI">Business Intelligence with Power BI</option>
-                      <option value="Data Science for Product Managers">Data Science for Product Managers</option>
-                      <option value="Advanced Data Visualization">Advanced Data Visualization</option>
-                      <option value="Degree Program in Artificial Intelligence">Degree Program in Artificial Intelligence</option>
-                      <option value="Post Graduation Program in Artificial Intelligence">Post Graduation Program in Artificial Intelligence</option>
+                      <option value="Diploma in Data Science & AI" className="bg-[#050b14] text-white">Diploma in Data Science &amp; AI</option>
+                      <option value="Diploma in Data Analytics & AI | Get Job-Ready" className="bg-[#050b14] text-white">Diploma in Data Analytics &amp; AI | Get Job-Ready</option>
+                      <option value="Advanced Certificate in Data Science & AI Program" className="bg-[#050b14] text-white">Advanced Certificate in Data Science &amp; AI Program</option>
+                      <option value="Advanced Certificate in Data Analytics & AI Program" className="bg-[#050b14] text-white">Advanced Certificate in Data Analytics &amp; AI Program</option>
+                      <option value="Certificate in Data Science & AI" className="bg-[#050b14] text-white">Certificate in Data Science &amp; AI</option>
+                      <option value="Certificate in Data Analytics & AI" className="bg-[#050b14] text-white">Certificate in Data Analytics &amp; AI</option>
+                      <option value="Applied Data Analytics with Python & SQL" className="bg-[#050b14] text-white">Applied Data Analytics with Python &amp; SQL</option>
+                      <option value="Business Intelligence with Power BI" className="bg-[#050b14] text-white">Business Intelligence with Power BI</option>
+                      <option value="Data Science for Product Managers" className="bg-[#050b14] text-white">Data Science for Product Managers</option>
+                      <option value="Advanced Data Visualization" className="bg-[#050b14] text-white">Advanced Data Visualization</option>
+                      <option value="Degree Program in Artificial Intelligence" className="bg-[#050b14] text-white">Degree Program in Artificial Intelligence</option>
+                      <option value="Post Graduation Program in Artificial Intelligence" className="bg-[#050b14] text-white">Post Graduation Program in Artificial Intelligence</option>
                     </select>
                   </div>
 
                   {/* Background / Current Status */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-800 mb-1.5">Current Background *</label>
+                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Current Background *</label>
                     <select
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-base focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all font-medium cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all font-medium cursor-pointer"
                     >
-                      <option value="Working Professional - Tech">Working Professional (Tech)</option>
-                      <option value="Working Professional - Non Tech">Working Professional (Non-Tech)</option>
-                      <option value="College Student - Final Year">College Student (Final Year)</option>
-                      <option value="College Student - 1st to 3rd Year">College Student (1st to 3rd Year)</option>
-                      <option value="Fresher / Job Seeker">Fresher / Job Seeker</option>
-                      <option value="Career Gap / Transition">Career Gap / Transition</option>
-                      <option value="Others">Others</option>
+                      <option value="Working Professional - Tech" className="bg-[#050b14] text-white">Working Professional (Tech)</option>
+                      <option value="Working Professional - Non Tech" className="bg-[#050b14] text-white">Working Professional (Non-Tech)</option>
+                      <option value="College Student - Final Year" className="bg-[#050b14] text-white">College Student (Final Year)</option>
+                      <option value="College Student - 1st to 3rd Year" className="bg-[#050b14] text-white">College Student (1st to 3rd Year)</option>
+                      <option value="Fresher / Job Seeker" className="bg-[#050b14] text-white">Fresher / Job Seeker</option>
+                      <option value="Career Gap / Transition" className="bg-[#050b14] text-white">Career Gap / Transition</option>
+                      <option value="Others" className="bg-[#050b14] text-white">Others</option>
                     </select>
                   </div>
 
@@ -427,16 +427,16 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                       type="checkbox"
                       id="hero_whatsapp_consent"
                       defaultChecked
-                      className="mt-1 h-4 w-4 rounded border-slate-300 text-[#0284c7] focus:ring-[#0284c7] cursor-pointer"
+                      className="mt-1 h-4 w-4 rounded border-[#162c4d] bg-[#050b14] text-[#0284c7] focus:ring-[#0284c7] cursor-pointer"
                     />
-                    <label htmlFor="hero_whatsapp_consent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
+                    <label htmlFor="hero_whatsapp_consent" className="text-xs text-gray-300 leading-snug cursor-pointer select-none">
                       Send me 2026 AI-integrated syllabus PDF &amp; fee discounts on WhatsApp.
                     </label>
                   </div>
 
                   {/* Error / Rate limit Alert */}
                   {errorMessage && (
-                    <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-start gap-2 animate-pulse">
+                    <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs flex items-start gap-2 animate-pulse">
                       <span className="shrink-0 text-sm font-bold">⚠️</span>
                       <span className="leading-relaxed">{errorMessage}</span>
                     </div>
@@ -459,11 +459,11 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   </button>
 
                   {/* Trust Footer */}
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-slate-500 pt-1">
-                    <span className="text-slate-600 font-medium">100% Privacy</span>
-                    <span className="w-1 h-1 rounded-full bg-slate-300" />
+                  <div className="lead-form-trust flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-gray-400 pt-1">
+                    <span className="text-gray-300 font-medium">100% Privacy</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-600" />
                     <span>No Spam Calls</span>
-                    <span className="w-1 h-1 rounded-full bg-slate-300" />
+                    <span className="w-1 h-1 rounded-full bg-gray-600" />
                     <span>Instant WhatsApp Brochure</span>
                   </div>
 

@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     siteName: 'NIDADS Data Science & AI Bootcamp',
     type: 'website',
   },
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

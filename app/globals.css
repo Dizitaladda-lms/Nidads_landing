@@ -312,3 +312,49 @@ a:focus-visible {
     animation: none;
   }
 }
+
+/* ========================================================
+   Hero Lead Form Dark Theme (Guaranteed High Contrast & Visibility)
+   ======================================================== */
+.hero-lead-form-dark {
+  background: linear-gradient(180deg, #0a1626 0%, #07111e 100%) !important;
+  background-color: #07111e !important;
+  border: 1px solid #1e3c66 !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+.hero-lead-form-dark h3,
+.hero-lead-form-dark h4 {
+  color: #ffffff !important;
+}
+
+.hero-lead-form-dark label {
+  color: #e2e8f0 !important;
+}
+
+.hero-lead-form-dark input,
+.hero-lead-form-dark select {
+  background-color: #050b14 !important;
+  border-color: #162c4d !important;
+  color: #ffffff !important;
+}
+
+.hero-lead-form-dark input:focus,
+.hero-lead-form-dark select:focus {
+  background-color: #081424 !important;
+  border-color: #38b6ff !important;
+}
+
+.hero-lead-form-dark input::placeholder {
+  color: #64748b !important;
+}
+
+.hero-lead-form-dark .lead-form-subtext {
+  color: #cbd5e1 !important;
+}
+
+.hero-lead-form-dark .lead-form-trust {
+  color: #94a3b8 !important;
+}
+
