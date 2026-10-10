@@ -39,7 +39,7 @@ export default function SubNav({ onOpenModal }: SubNavProps) {
 
   return (
     <div
-      className="sub-navigation sticky top-14 sm:top-16 z-40 border-y shadow-sm"
+      className="sub-navigation sticky top-[86px] sm:top-[96px] z-40 border-y shadow-sm"
       style={{ backgroundColor: '#ffffff', borderColor: '#dbeafe' }}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between h-11 sm:h-12">
