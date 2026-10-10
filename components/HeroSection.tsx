@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { captureAttribution } from '@/lib/attribution';
 import AutoCarousel from '@/components/AutoCarousel';
+import BrandLogo from '@/components/BrandLogo';
 
 interface HeroSectionProps {
   onLeadSuccess: (data: any) => void;
@@ -156,7 +157,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* On desktop: 2-column grid. On mobile: show the lead form before the headline. */}
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-10 items-start">
           
           {/* 1. Header Portion (Headline & Subhead) */}
           <div className="w-full lg:col-span-7 space-y-4 sm:space-y-6 order-2 lg:order-1">
@@ -236,35 +237,63 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
               </div>
             </div>
 
+            {/* Top Hiring Companies & Alumni Success Strip (Fills desktop left space) */}
+            <div className="hidden lg:block p-4 rounded-2xl bg-white border border-blue-100 shadow-sm">
+              <div className="flex items-center justify-between gap-3 mb-2.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0284c7]">
+                  Alumni Work At Top Tech Giants &amp; MNCs:
+                </span>
+                <span className="text-xs font-bold text-emerald-600 flex items-center gap-1">
+                  <span>★</span> 4.9/5 Rating (3,200+ Reviews)
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                {[
+                  { name: 'Google', domain: 'google.com' },
+                  { name: 'Microsoft', domain: 'microsoft.com' },
+                  { name: 'Amazon', domain: 'amazon.com' },
+                  { name: 'Deloitte', domain: 'deloitte.com' },
+                  { name: 'Fractal', domain: 'fractal.ai' },
+                  { name: 'Infosys', domain: 'infosys.com' },
+                  { name: 'AmEx', domain: 'americanexpress.com' },
+                ].map((co) => (
+                  <div key={co.name} className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200/80 text-xs font-semibold text-slate-700">
+                    <BrandLogo name={co.name} domain={co.domain} size={15} />
+                    <span>{co.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
 
           {/* 2. Form Column: visible immediately on mobile and beside the headline on desktop. */}
           <div className="w-full lg:col-span-5 order-1 lg:order-2">
-            <div className="hero-lead-form-dark relative rounded-3xl bg-[#07111e] p-5 sm:p-8 border border-[#1e3c66] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+            <div className="hero-lead-form-dark relative rounded-3xl bg-[#07111e] p-5 sm:p-6 lg:p-6 border border-[#1e3c66] shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
               
-              <div className="text-center mb-4 sm:mb-6">
-                <div className="inline-block px-3.5 py-1 rounded-full bg-[#38b6ff]/15 border border-[#38b6ff]/40 text-[#38b6ff] text-xs font-black uppercase tracking-wider mb-2">
+              <div className="text-center mb-3 sm:mb-4">
+                <div className="inline-block px-3 py-0.5 rounded-full bg-[#38b6ff]/15 border border-[#38b6ff]/40 text-[#38b6ff] text-[11px] font-black uppercase tracking-wider mb-1.5">
                   LIMITED SEATS!
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
                   Speak To Our Counsellor
                 </h3>
-                <p className="lead-form-subtext text-sm sm:text-base text-gray-300 mt-1">
+                <p className="lead-form-subtext text-xs sm:text-sm text-gray-300 mt-0.5">
                   Fill details to download curriculum &amp; speak to experts.
                 </p>
                 {/* Social proof urgency counter */}
-                <div className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-xs text-emerald-300 font-semibold">
+                <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-[11px] text-emerald-300 font-semibold">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span>14 Candidates Requested Call in Last 2 Hours</span>
                 </div>
               </div>
 
               {submitted ? (
-                <div className="py-6 sm:py-8 text-center space-y-4">
-                  <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
+                <div className="py-6 text-center space-y-4">
+                  <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
                     ✓
                   </div>
-                  <h4 className="text-xl sm:text-2xl font-bold text-white">Thank You! Request Received</h4>
+                  <h4 className="text-xl font-bold text-white">Thank You! Request Received</h4>
                   <p className="text-sm text-gray-300">
                     Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.
                   </p>
@@ -280,26 +309,26 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         download="NIDADS-Data-Science-Course-Brochure.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-sm shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.01] cursor-pointer"
+                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#38b6ff]/20 transition-all hover:scale-[1.01] cursor-pointer"
                       >
                         <span className="flex items-center gap-2">
                           <span>📘</span>
                           <span>Data Science &amp; AI Brochure</span>
                         </span>
-                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-xs font-extrabold">Download PDF</span>
+                        <span className="bg-white/20 px-2 py-0.5 rounded-lg text-xs font-extrabold">Download PDF</span>
                       </a>
                       <a
                         href="/nidads-data-analytics-brochure.pdf"
                         download="NIDADS-Data-Analytics-Course-Brochure.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-sm shadow-md shadow-teal-500/20 transition-all hover:scale-[1.01] cursor-pointer"
+                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#0f766e] via-[#14b8a6] to-[#2dd4bf] hover:from-[#115e59] hover:to-[#14b8a6] text-white font-bold text-xs sm:text-sm shadow-md shadow-teal-500/20 transition-all hover:scale-[1.01] cursor-pointer"
                       >
                         <span className="flex items-center gap-2">
                           <span>📊</span>
                           <span>Data Analytics &amp; AI Brochure</span>
                         </span>
-                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-xs font-extrabold">Download PDF</span>
+                        <span className="bg-white/20 px-2 py-0.5 rounded-lg text-xs font-extrabold">Download PDF</span>
                       </a>
                       <button
                         type="button"
@@ -315,13 +344,13 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                           dl('/nidads-data-science-brochure.pdf', 'NIDADS-Data-Science-Course-Brochure.pdf');
                           setTimeout(() => dl('/nidads-data-analytics-brochure.pdf', 'NIDADS-Data-Analytics-Course-Brochure.pdf'), 600);
                         }}
-                        className="flex items-center justify-between p-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.01] cursor-pointer w-full"
+                        className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-indigo-500/20 transition-all hover:scale-[1.01] cursor-pointer w-full"
                       >
                         <span className="flex items-center gap-2">
                           <span>📚</span>
                           <span>Download Both (Science + Analytics)</span>
                         </span>
-                        <span className="bg-white/20 px-2.5 py-1 rounded-lg text-xs font-extrabold">Download All</span>
+                        <span className="bg-white/20 px-2 py-0.5 rounded-lg text-xs font-extrabold">Download All</span>
                       </button>
                     </div>
                   </div>
@@ -334,38 +363,38 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3.5">
+                <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-3">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Full Name *</label>
+                    <label className="block text-xs sm:text-sm font-bold text-gray-200 mb-1">Full Name *</label>
                     <input
                       type="text"
                       required
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Rahul Sharma"
-                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-sm sm:text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Email Address *</label>
+                    <label className="block text-xs sm:text-sm font-bold text-gray-200 mb-1">Email Address *</label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. rahul.sharma@gmail.com"
-                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-sm sm:text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
                     />
                   </div>
 
                   {/* WhatsApp Mobile Number with +91 Prefix */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-1.5">WhatsApp Mobile Number *</label>
+                    <label className="block text-xs sm:text-sm font-bold text-gray-200 mb-1">WhatsApp Mobile Number *</label>
                     <div className="flex items-center">
-                      <div className="bg-[#0d1f35] border border-r-0 border-[#162c4d] rounded-l-xl px-3.5 py-3 text-[#38b6ff] text-base font-bold flex items-center select-none">
+                      <div className="bg-[#0d1f35] border border-r-0 border-[#162c4d] rounded-l-xl px-3 py-2.5 text-[#38b6ff] text-sm sm:text-base font-bold flex items-center select-none">
                         +91
                       </div>
                       <input
@@ -375,18 +404,18 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
                         placeholder="10-digit phone number"
-                        className="w-full px-4 py-3 rounded-r-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
+                        className="w-full px-3.5 py-2.5 rounded-r-xl bg-[#050b14] border border-[#162c4d] text-white text-sm sm:text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all placeholder:text-gray-500 font-medium"
                       />
                     </div>
                   </div>
 
                   {/* Select Course */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Select Course *</label>
+                    <label className="block text-xs sm:text-sm font-bold text-gray-200 mb-1">Select Course *</label>
                     <select
                       value={formData.course}
                       onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all font-medium cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-sm sm:text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all font-medium cursor-pointer"
                     >
                       <option value="Diploma in Data Science & AI" className="bg-[#050b14] text-white">Diploma in Data Science &amp; AI</option>
                       <option value="Diploma in Data Analytics & AI | Get Job-Ready" className="bg-[#050b14] text-white">Diploma in Data Analytics &amp; AI | Get Job-Ready</option>
@@ -405,11 +434,11 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
                   {/* Background / Current Status */}
                   <div>
-                    <label className="block text-sm font-bold text-gray-200 mb-1.5">Current Background *</label>
+                    <label className="block text-xs sm:text-sm font-bold text-gray-200 mb-1">Current Background *</label>
                     <select
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all font-medium cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#050b14] border border-[#162c4d] text-white text-sm sm:text-base focus:bg-[#081424] focus:outline-none focus:border-[#38b6ff] focus:ring-2 focus:ring-[#38b6ff]/25 transition-all font-medium cursor-pointer"
                     >
                       <option value="Working Professional - Tech" className="bg-[#050b14] text-white">Working Professional (Tech)</option>
                       <option value="Working Professional - Non Tech" className="bg-[#050b14] text-white">Working Professional (Non-Tech)</option>
@@ -422,21 +451,21 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   </div>
 
                   {/* WhatsApp Syllabus Consent Checkbox */}
-                  <div className="flex items-start gap-2.5 pt-1">
+                  <div className="flex items-start gap-2 pt-0.5">
                     <input
                       type="checkbox"
                       id="hero_whatsapp_consent"
                       defaultChecked
-                      className="mt-1 h-4 w-4 rounded border-[#162c4d] bg-[#050b14] text-[#0284c7] focus:ring-[#0284c7] cursor-pointer"
+                      className="mt-0.5 h-3.5 w-3.5 rounded border-[#162c4d] bg-[#050b14] text-[#0284c7] focus:ring-[#0284c7] cursor-pointer"
                     />
-                    <label htmlFor="hero_whatsapp_consent" className="text-xs text-gray-300 leading-snug cursor-pointer select-none">
+                    <label htmlFor="hero_whatsapp_consent" className="text-[11px] text-gray-300 leading-snug cursor-pointer select-none">
                       Send me 2026 AI-integrated syllabus PDF &amp; fee discounts on WhatsApp.
                     </label>
                   </div>
 
                   {/* Error / Rate limit Alert */}
                   {errorMessage && (
-                    <div className="p-3 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs flex items-start gap-2 animate-pulse">
+                    <div className="p-2.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs flex items-start gap-2 animate-pulse">
                       <span className="shrink-0 text-sm font-bold">⚠️</span>
                       <span className="leading-relaxed">{errorMessage}</span>
                     </div>
@@ -446,7 +475,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-3 py-3.5 px-6 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-black text-base sm:text-lg shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center cursor-pointer"
+                    className="w-full mt-2 py-3 px-5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-black text-sm sm:text-base shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center cursor-pointer"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">
@@ -459,7 +488,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   </button>
 
                   {/* Trust Footer */}
-                  <div className="lead-form-trust flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-gray-400 pt-1">
+                  <div className="lead-form-trust flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] text-gray-400 pt-0.5">
                     <span className="text-gray-300 font-medium">100% Privacy</span>
                     <span className="w-1 h-1 rounded-full bg-gray-600" />
                     <span>No Spam Calls</span>
