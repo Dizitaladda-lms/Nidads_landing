@@ -244,7 +244,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   Alumni Work At Top Tech Giants &amp; MNCs:
                 </span>
                 <span className="text-xs font-bold text-emerald-600 flex items-center gap-1">
-                  <span>★</span> 4.9/5 Rating (3,200+ Reviews)
+                  
                 </span>
               </div>
               <div className="flex items-center justify-between gap-2 flex-wrap">
