@@ -37,9 +37,19 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <a
               href="tel:+919205436796"
-              className="hidden sm:inline-block text-xs sm:text-sm font-bold text-gray-700 hover:text-[#009bd7] transition-colors px-2 py-1"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-gray-700 hover:text-[#009bd7] transition-colors px-2 py-1"
             >
-              +91 92054 36796
+              <svg
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="text-[#0284c7]"
+                aria-hidden="true"
+              >
+                <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z" />
+              </svg>
+              <span>+91 92054 36796</span>
             </a>
             <button
               onClick={onOpenModal}
