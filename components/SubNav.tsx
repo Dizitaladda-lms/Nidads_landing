@@ -57,9 +57,9 @@ export default function SubNav({ onOpenModal }: SubNavProps) {
                   borderColor: isActive ? '#7dd3fc' : 'transparent',
                   color: isActive ? '#075985' : '#334155',
                 }}
-                className={`px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full whitespace-nowrap transition-all text-[11px] sm:text-xs md:text-sm ${
+                className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full whitespace-nowrap transition-all text-xs sm:text-sm md:text-base ${
                   isActive
-                    ? 'sub-navigation-link-active border font-semibold'
+                    ? 'sub-navigation-link-active border font-bold'
                     : 'sub-navigation-link hover:bg-[#eff8ff]'
                 }`}
               >
@@ -73,7 +73,7 @@ export default function SubNav({ onOpenModal }: SubNavProps) {
         <div className="hidden md:block pl-4 shrink-0">
           <button
             onClick={onOpenModal}
-            className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-bold text-xs tracking-wide shadow-md shadow-[#38b6ff]/20 transition-all cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#0284c7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-bold text-sm tracking-wide shadow-md shadow-[#38b6ff]/20 transition-all cursor-pointer"
           >
             Apply Now
           </button>

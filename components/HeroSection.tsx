@@ -163,11 +163,11 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             
             {/* Mode Selector / Badge */}
             <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#38b6ff]/10 border border-[#38b6ff]/40 text-[#38b6ff] text-[11px] sm:text-xs font-semibold tracking-wide">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#38b6ff]/10 border border-[#38b6ff]/40 text-[#38b6ff] text-xs sm:text-sm font-semibold tracking-wide">
                 <span className="w-2 h-2 rounded-full bg-[#38b6ff] animate-ping shrink-0"></span>
                 <span>Next Cohort Starting Soon &bull; 25 Seats Only</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-medium text-gray-300">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-gray-300">
                 <span className="text-[#38b6ff] font-semibold">Online Live</span>
                 <span className="text-gray-500">&bull;</span>
                 <span className="text-[#ffbf5f] font-semibold">Offline (Delhi)</span>
@@ -184,33 +184,33 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             </h1>
 
             {/* Sub-Headline */}
-            <p className="text-sm sm:text-base text-gray-300 max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
               India&apos;s premier <strong>Job Bootcamp with Placement Support</strong> — covering Python, SQL, Machine Learning, Power BI, and modern AI workflows through live industry projects for beginners &amp; working professionals.
             </p>
 
             {/* Value Pillars List (Visible here on Desktop, order changes on mobile) */}
-            <div className="hidden lg:grid grid-cols-2 gap-3 pt-1">
-              <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs sm:text-sm text-gray-200 font-medium">
+            <div className="hidden lg:grid grid-cols-2 gap-3.5 pt-1">
+              <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e]">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm sm:text-base text-gray-200 font-medium">
                   <strong>100% Placement Support</strong> until you land your dream job
                 </span>
               </div>
-              <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs sm:text-sm text-gray-200 font-medium">
+              <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e]">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm sm:text-base text-gray-200 font-medium">
                   <strong>1-on-1 Doubt Support</strong> 
                 </span>
               </div>
-              <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs sm:text-sm text-gray-200 font-medium">
+              <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e]">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm sm:text-base text-gray-200 font-medium">
                   <strong>20+ Industry Projects</strong> with real business datasets
                 </span>
               </div>
-              <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs sm:text-sm text-gray-200 font-medium">
+              <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e]">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm sm:text-base text-gray-200 font-medium">
                   <strong>Govt &amp; Industry Recognized</strong> NIDADS verified certificate
                 </span>
               </div>
@@ -219,20 +219,20 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             {/* NIDADS Official Stats Strip (Visible here on Desktop) */}
             <div className="hidden lg:grid grid-cols-4 gap-3.5 pt-2">
               <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e] text-center hover:border-[#38b6ff]/40 transition-colors">
-                <div className="text-2xl font-extrabold text-[#38b6ff]">25,000+</div>
-                <div className="text-xs text-gray-400 font-medium mt-0.5">Students Trained</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#38b6ff]">25,000+</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium mt-0.5">Students Trained</div>
               </div>
               <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e] text-center hover:border-[#38b6ff]/40 transition-colors">
-                <div className="text-2xl font-extrabold text-emerald-400">98%</div>
-                <div className="text-xs text-gray-400 font-medium mt-0.5">Success Rate</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400">98%</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium mt-0.5">Success Rate</div>
               </div>
               <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e] text-center hover:border-[#38b6ff]/40 transition-colors">
-                <div className="text-2xl font-extrabold text-[#46d9ff]">500+</div>
-                <div className="text-xs text-gray-400 font-medium mt-0.5">Hiring Partners</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[#46d9ff]">500+</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium mt-0.5">Hiring Partners</div>
               </div>
               <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#152d4e] text-center hover:border-[#38b6ff]/40 transition-colors">
-                <div className="text-2xl font-extrabold text-amber-400">15+</div>
-                <div className="text-xs text-gray-400 font-medium mt-0.5">Years Experience</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-amber-400">15+</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium mt-0.5">Years Experience</div>
               </div>
             </div>
 
@@ -243,10 +243,10 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             <div className="hero-lead-form relative rounded-2xl bg-gradient-to-b from-[#0a1626] to-[#07111e] p-4 sm:p-7 border border-[#009bd7]/70 form-attract-pulse">
               
               <div className="text-center mb-3 sm:mb-5">
-                <h3 className="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
                   Talk to a Senior Career Advisor
                 </h3>
-                <p className="text-sm text-gray-300 mt-1">
+                <p className="text-sm sm:text-base text-gray-300 mt-1">
                   Get personalized roadmap + detailed curriculum delivered on WhatsApp
                 </p>
                 {/* Social proof urgency counter */}
@@ -430,7 +430,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full mt-2 py-3.5 px-4 sm:px-6 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-extrabold text-sm sm:text-base button-attract-glow transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center cursor-pointer"
+                    className="w-full mt-2 py-3.5 px-4 sm:px-6 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-extrabold text-base sm:text-lg button-attract-glow transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center cursor-pointer"
                   >
                     {loading ? (
                       <span className="flex items-center gap-2">
@@ -443,7 +443,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   </button>
 
                   {/* Trust Footer */}
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[10px] sm:text-[11px] text-gray-400 pt-1">
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 pt-1">
                     <span className="text-gray-300 font-medium">100% Privacy</span>
                     <span className="w-1 h-1 rounded-full bg-gray-600" />
                     <span>No Spam Calls</span>
@@ -459,29 +459,29 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
           {/* 3. Mobile-only Pillars & Stats (shown below the form on mobile so the form is never pushed down!) */}
           <div className="w-full lg:hidden space-y-4 pt-2 order-3">
-            <h3 className="text-base font-bold text-white text-center pt-2">Why 25,000+ Students Trust NIDADS</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-white text-center pt-2">Why 25,000+ Students Trust NIDADS</h3>
             <AutoCarousel desktopClassName="hidden" mobileClassName="lg:hidden">
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs text-gray-200 font-medium">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm text-gray-200 font-medium">
                   <strong>100% Placement Support</strong> until you land your dream job
                 </span>
                 </div>
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs text-gray-200 font-medium">
-                  <strong>24/7 1-on-1 Doubt Support</strong> 
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm text-gray-200 font-medium">
+                  <strong>1-on-1 Doubt Support</strong> 
                 </span>
               </div>
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs text-gray-200 font-medium">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm text-gray-200 font-medium">
                   <strong>20+ Industry Projects</strong> with real business datasets
                 </span>
               </div>
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#07111e] border border-[#152d4e]">
-                <span className="text-[#38b6ff] font-bold text-sm shrink-0 mt-0.5">✓</span>
-                <span className="text-xs text-gray-200 font-medium">
+                <span className="text-[#38b6ff] font-bold text-base shrink-0 mt-0.5">✓</span>
+                <span className="text-sm text-gray-200 font-medium">
                   <strong>Govt &amp; Industry Recognized</strong> NIDADS verified certificate
                 </span>
               </div>
@@ -490,20 +490,20 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
             {/* Mobile Stats 2x2 */}
             <div className="grid grid-cols-2 gap-2 pt-1">
               <div className="p-3 rounded-xl bg-[#07111e] border border-[#152d4e] text-center">
-                <div className="text-xl font-extrabold text-[#38b6ff]">25,000+</div>
-                <div className="text-[10px] text-gray-400 font-medium">Students Trained</div>
+                <div className="text-2xl font-extrabold text-[#38b6ff]">25,000+</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium">Students Trained</div>
               </div>
               <div className="p-3 rounded-xl bg-[#07111e] border border-[#152d4e] text-center">
-                <div className="text-xl font-extrabold text-emerald-400">98%</div>
-                <div className="text-[10px] text-gray-400 font-medium">Success Rate</div>
+                <div className="text-2xl font-extrabold text-emerald-400">98%</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium">Success Rate</div>
               </div>
               <div className="p-3 rounded-xl bg-[#07111e] border border-[#152d4e] text-center">
-                <div className="text-xl font-extrabold text-[#46d9ff]">500+</div>
-                <div className="text-[10px] text-gray-400 font-medium">Hiring Partners</div>
+                <div className="text-2xl font-extrabold text-[#46d9ff]">500+</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium">Hiring Partners</div>
               </div>
               <div className="p-3 rounded-xl bg-[#07111e] border border-[#152d4e] text-center">
-                <div className="text-xl font-extrabold text-amber-400">15+</div>
-                <div className="text-[10px] text-gray-400 font-medium">Years Experience</div>
+                <div className="text-2xl font-extrabold text-amber-400">15+</div>
+                <div className="text-xs sm:text-sm text-gray-400 font-medium">Years Experience</div>
               </div>
             </div>
           </div>
