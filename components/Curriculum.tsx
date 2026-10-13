@@ -4,36 +4,127 @@ import React, { useState } from 'react';
 import BrandLogo from '@/components/BrandLogo';
 import AutoCarousel from '@/components/AutoCarousel';
 
-const toolDomains: Record<string, string> = {
-  'Python 3.12': 'python.org',
-  PostgreSQL: 'postgresql.org',
-  'Git & GitHub': 'github.com',
-  NumPy: 'numpy.org',
-  Pandas: 'pandas.pydata.org',
-  PowerBI: 'powerbi.microsoft.com',
-  Tableau: 'tableau.com',
-  Seaborn: 'seaborn.pydata.org',
-  SciPy: 'scipy.org',
-  Excel: 'microsoft.com',
-  'Scikit-Learn': 'scikit-learn.org',
-  XGBoost: 'xgboost.ai',
-  LightGBM: 'github.com',
-  Docker: 'docker.com',
-  PyTorch: 'pytorch.org',
-  TensorFlow: 'tensorflow.org',
-  HuggingFace: 'huggingface.co',
-  OpenCV: 'opencv.org',
-  LangChain: 'langchain.com',
-  LlamaIndex: 'llamaindex.ai',
-  'OpenAI API': 'openai.com',
-  ChromaDB: 'trychroma.com',
-  Pinecone: 'pinecone.io',
-  CrewAI: 'crewai.com',
-  'AWS / GCP': 'aws.amazon.com',
-  FastAPI: 'fastapi.tiangolo.com',
-  MLflow: 'mlflow.org',
-  Streamlit: 'streamlit.io',
-  'Next.js': 'nextjs.org',
+const toolMeta: Record<string, { domain: string; icon?: string }> = {
+  'Python 3.12': {
+    domain: 'python.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+  },
+  PostgreSQL: {
+    domain: 'postgresql.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+  },
+  'Git & GitHub': {
+    domain: 'github.com',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+  },
+  NumPy: {
+    domain: 'numpy.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg',
+  },
+  Pandas: {
+    domain: 'pandas.pydata.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg',
+  },
+  PowerBI: {
+    domain: 'powerbi.microsoft.com',
+    icon: 'https://api.iconify.design/logos:microsoft-power-bi.svg',
+  },
+  Tableau: {
+    domain: 'tableau.com',
+    icon: 'https://api.iconify.design/logos:tableau-icon.svg',
+  },
+  Seaborn: {
+    domain: 'seaborn.pydata.org',
+    icon: 'https://api.iconify.design/logos:seaborn-icon.svg',
+  },
+  Matplotlib: {
+    domain: 'matplotlib.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg',
+  },
+  SciPy: {
+    domain: 'scipy.org',
+    icon: 'https://api.iconify.design/simple-icons:scipy.svg?color=%230C55A5',
+  },
+  Excel: {
+    domain: 'microsoft.com',
+    icon: 'https://api.iconify.design/vscode-icons:file-type-excel.svg',
+  },
+  'Scikit-Learn': {
+    domain: 'scikit-learn.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg',
+  },
+  XGBoost: {
+    domain: 'xgboost.ai',
+    icon: 'https://api.iconify.design/simple-icons:xgboost.svg?color=%230284c7',
+  },
+  LightGBM: {
+    domain: 'lightgbm.readthedocs.io',
+    icon: 'https://api.iconify.design/simple-icons:lightgbm.svg?color=%230284c7',
+  },
+  Flask: {
+    domain: 'palletsprojects.com',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg',
+  },
+  Docker: {
+    domain: 'docker.com',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+  },
+  PyTorch: {
+    domain: 'pytorch.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg',
+  },
+  TensorFlow: {
+    domain: 'tensorflow.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg',
+  },
+  HuggingFace: {
+    domain: 'huggingface.co',
+    icon: 'https://api.iconify.design/fluent-emoji:hugging-face.svg',
+  },
+  OpenCV: {
+    domain: 'opencv.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg',
+  },
+  LangChain: {
+    domain: 'langchain.com',
+    icon: 'https://api.iconify.design/simple-icons:langchain.svg?color=%231C3C3C',
+  },
+  LlamaIndex: {
+    domain: 'llamaindex.ai',
+  },
+  'OpenAI API': {
+    domain: 'openai.com',
+    icon: 'https://api.iconify.design/simple-icons:openai.svg?color=%2310A37F',
+  },
+  ChromaDB: {
+    domain: 'trychroma.com',
+  },
+  Pinecone: {
+    domain: 'pinecone.io',
+  },
+  CrewAI: {
+    domain: 'crewai.com',
+  },
+  'AWS / GCP': {
+    domain: 'aws.amazon.com',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+  },
+  FastAPI: {
+    domain: 'fastapi.tiangolo.com',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg',
+  },
+  MLflow: {
+    domain: 'mlflow.org',
+    icon: 'https://api.iconify.design/simple-icons:mlflow.svg?color=%230194E2',
+  },
+  Streamlit: {
+    domain: 'streamlit.io',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg',
+  },
+  'Next.js': {
+    domain: 'nextjs.org',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+  },
 };
 
 interface CurriculumProps {
@@ -166,8 +257,8 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
                 key={idx}
                 className={`rounded-xl sm:rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? 'bg-[#0a1626] border-[#38b6ff]/60 shadow-xl shadow-[#38b6ff]/10'
-                    : 'bg-[#050b14] border-[#152d4e] hover:border-[#38b6ff]/30'
+                    ? 'bg-white border-[#38b6ff] shadow-lg shadow-[#38b6ff]/10'
+                    : 'bg-white border-blue-100 hover:border-[#38b6ff]/50 shadow-sm'
                 }`}
               >
                 {/* Accordion Header */}
@@ -176,55 +267,77 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full p-4 sm:p-6 text-left flex items-start sm:items-center justify-between gap-3 cursor-pointer"
                 >
-                  <div className="space-y-1 sm:space-y-1.5 flex-1 min-w-0">
+                  <div className="space-y-2 flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2 sm:px-2.5 py-0.5 rounded-full bg-[#38b6ff]/10 text-[#38b6ff] border border-[#38b6ff]/30">
+                      <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-100 text-[#0284c7] border border-sky-200">
                         {mod.phase}
                       </span>
-                      <span className="text-[11px] sm:text-xs text-gray-400">
+                      <span className="text-xs sm:text-sm font-semibold text-slate-500">
                         {mod.duration}
                       </span>
                     </div>
-                    <h3 className="text-sm sm:text-lg font-bold text-white leading-snug">
+                    <h3 className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
                       {mod.title}
                     </h3>
                     
-                    {/* Tool Badges preview */}
-                    <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap pt-0.5 sm:pt-1">
-                      {mod.tools.map((t, i) => (
-                        <span
-                          key={i}
-                          className="inline-flex items-center gap-1.5 text-[9px] sm:text-[10px] font-medium bg-white/5 border border-white/10 text-gray-600 px-1.5 sm:px-2 py-1 rounded"
-                        >
-                          {toolDomains[t] && <BrandLogo name={t} domain={toolDomains[t]} size={18} />}
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                    {/* Tool Badges preview (shown when collapsed so open state doesn't duplicate tools twice) */}
+                    {!isOpen && (
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap pt-1">
+                        {mod.tools.map((t, i) => {
+                          const meta = toolMeta[t];
+                          return (
+                            <span
+                              key={i}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold bg-slate-50 border border-slate-200 text-slate-800 px-2.5 py-1 rounded-lg shadow-2xs"
+                            >
+                              {meta && (
+                                <BrandLogo
+                                  name={t}
+                                  domain={meta.domain}
+                                  iconUrl={meta.icon}
+                                  size={16}
+                                />
+                              )}
+                              <span>{t}</span>
+                            </span>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/5 flex items-center justify-center text-[#38b6ff] font-bold text-base shrink-0 mt-0.5 sm:mt-0">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-sky-50 border border-sky-200 flex items-center justify-center text-[#0284c7] font-bold text-lg shrink-0 mt-0.5 sm:mt-0">
                     {isOpen ? '−' : '+'}
                   </div>
                 </button>
 
                 {/* Accordion Body */}
                 {isOpen && (
-                  <div className="px-4 pb-5 sm:px-6 sm:pb-6 pt-3 border-t border-[#152d4e] bg-[#050b14]/50">
-                    <div className="rounded-xl border border-[#152d4e] bg-[#0a1626] p-3 sm:p-4">
-                      <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">
-                        Tools covered
+                  <div className="px-4 pb-5 sm:px-6 sm:pb-6 pt-3 border-t border-blue-100 bg-sky-50/40">
+                    <div className="rounded-xl border border-sky-200/80 bg-white p-3.5 sm:p-4 shadow-xs">
+                      <p className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.16em] text-[#0284c7]">
+                        Tools Covered
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {mod.tools.map((tool, toolIndex) => (
-                          <span
-                            key={toolIndex}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-[#38b6ff]/20 bg-[#0d1d2f] px-2 py-1 text-[9px] sm:text-[10px] font-medium text-gray-200"
-                          >
-                            {toolDomains[tool] && <BrandLogo name={tool} domain={toolDomains[tool]} size={14} />}
-                            {tool}
-                          </span>
-                        ))}
+                      <div className="mt-3 flex flex-wrap gap-2.5">
+                        {mod.tools.map((tool, toolIndex) => {
+                          const meta = toolMeta[tool];
+                          return (
+                            <span
+                              key={toolIndex}
+                              className="inline-flex items-center gap-2 rounded-xl border border-sky-200 bg-sky-50/80 px-3.5 py-2 text-xs sm:text-sm font-bold text-slate-900 shadow-2xs"
+                            >
+                              {meta && (
+                                <BrandLogo
+                                  name={tool}
+                                  domain={meta.domain}
+                                  iconUrl={meta.icon}
+                                  size={20}
+                                />
+                              )}
+                              <span>{tool}</span>
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>

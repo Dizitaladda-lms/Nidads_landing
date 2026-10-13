@@ -25,7 +25,7 @@ export default function AutoCarousel({
     if (items.length < 2) return;
 
     const intervalId = window.setInterval(() => {
-      setSlideIndex((index) => index + 1);
+      setSlideIndex((index) => (index >= items.length + 1 ? 1 : index + 1));
     }, intervalMs);
 
     return () => window.clearInterval(intervalId);
@@ -34,12 +34,12 @@ export default function AutoCarousel({
   const recordInteraction = () => setInteractionVersion((version) => version + 1);
 
   const goToPrevious = () => {
-    setSlideIndex((index) => index - 1);
+    setSlideIndex((index) => (index <= 0 ? items.length : index - 1));
     recordInteraction();
   };
 
   const goToNext = () => {
-    setSlideIndex((index) => index + 1);
+    setSlideIndex((index) => (index >= items.length + 1 ? 1 : index + 1));
     recordInteraction();
   };
 
@@ -51,8 +51,8 @@ export default function AutoCarousel({
   const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) return;
 
-    const isAfterLastSlide = slideIndex === items.length + 1;
-    const isBeforeFirstSlide = slideIndex === 0;
+    const isAfterLastSlide = slideIndex >= items.length + 1;
+    const isBeforeFirstSlide = slideIndex <= 0;
     if (!isAfterLastSlide && !isBeforeFirstSlide) return;
 
     setTransitionEnabled(false);

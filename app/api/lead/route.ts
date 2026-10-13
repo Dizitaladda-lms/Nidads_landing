@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const CRM_ENDPOINT = process.env.CRM_ENDPOINT || 'https://leads.dizitaladda.com/api/public/leads';
+const CRM_ENDPOINT = process.env.CRM_ENDPOINT || '';
 const CRM_COURSE_NAME = process.env.CRM_COURSE_NAME || 'Data Science & AI Bootcamp';
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'NIDADS';
 const CRM_API_KEY = process.env.CRM_API_KEY || '';
@@ -200,7 +200,7 @@ export async function POST(request: Request) {
       source ? `Form: ${source}` : '',
     ].filter(Boolean).join(' | ');
 
-    // Prepare payload formatted for DizitalAdda CRM
+    // Prepare payload formatted for CRM
     const crmPayload = {
       fullName: fullName.trim(),
       mobileNumber: cleanPhone,
@@ -217,31 +217,30 @@ export async function POST(request: Request) {
       remarks: remarksText,
     };
 
-    console.log('🚀 [FORWARDING LEAD TO CRM via ENV]:', CRM_ENDPOINT, crmPayload);
-
     let crmResponseData = null;
 
-    try {
-      const headers: Record<string, string> = {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      };
+    if (CRM_ENDPOINT) {
+      try {
+        const headers: Record<string, string> = {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        };
 
-      if (CRM_API_KEY) {
-        headers['Authorization'] = `Bearer ${CRM_API_KEY}`;
-        headers['x-api-key'] = CRM_API_KEY;
+        if (CRM_API_KEY) {
+          headers['Authorization'] = `Bearer ${CRM_API_KEY}`;
+          headers['x-api-key'] = CRM_API_KEY;
+        }
+
+        const crmRes = await fetch(CRM_ENDPOINT, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(crmPayload),
+        });
+
+        crmResponseData = await crmRes.json().catch(() => null);
+      } catch (crmErr) {
+        console.error('⚠️ [CRM FORWARDING ERROR]:', crmErr);
       }
-
-      const crmRes = await fetch(CRM_ENDPOINT, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(crmPayload),
-      });
-
-      crmResponseData = await crmRes.json().catch(() => null);
-      console.log('✅ [CRM RESPONSE]:', crmRes.status, crmResponseData);
-    } catch (crmErr) {
-      console.error('⚠️ [CRM FORWARDING ERROR]:', crmErr);
     }
 
     return NextResponse.json({

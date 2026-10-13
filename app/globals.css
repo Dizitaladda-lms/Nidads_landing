@@ -98,6 +98,7 @@ b {
 }
 
 [class~="bg-[#07111e]"],
+[class~="bg-[#0d1d2f]"],
 [class~="bg-[#050b14]/80"] {
   background-color: #f0f8ff !important;
 }
