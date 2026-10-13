@@ -42,6 +42,7 @@ export async function POST(request: Request) {
       experience, 
       mode, 
       source, 
+      leadType,
       deviceId,
       adPlatform,
       gclid,
@@ -59,7 +60,9 @@ export async function POST(request: Request) {
       timestamp 
     } = data;
 
-    // Check device rate limit: Max 2 requests per 1 minute
+    const isDirectActionLead = leadType === 'WHATSAPP' || leadType === 'PHONE_CALL';
+
+    // Check device rate limit: Max 2 form requests per 1 minute (allow direct WhatsApp/Call leads up to 6)
     const clientId = getClientIdentifier(request, deviceId);
     const now = Date.now();
 
@@ -67,11 +70,13 @@ export async function POST(request: Request) {
       (time) => now - time < RATE_LIMIT_WINDOW_MS
     );
 
-    if (previousTimestamps.length >= MAX_LEADS_PER_WINDOW) {
+    const effectiveMaxLeads = isDirectActionLead ? 6 : MAX_LEADS_PER_WINDOW;
+
+    if (previousTimestamps.length >= effectiveMaxLeads) {
       const oldestTimestamp = previousTimestamps[0];
       const waitSeconds = Math.max(1, Math.ceil((oldestTimestamp + RATE_LIMIT_WINDOW_MS - now) / 1000));
 
-      console.warn(`🛑 [RATE LIMIT BLOCKED]: ${clientId} exceeded ${MAX_LEADS_PER_WINDOW} requests in 1 min. Retry in ${waitSeconds}s.`);
+      console.warn(`🛑 [RATE LIMIT BLOCKED]: ${clientId} exceeded ${effectiveMaxLeads} requests in 1 min. Retry in ${waitSeconds}s.`);
 
       return NextResponse.json(
         {
@@ -106,15 +111,45 @@ export async function POST(request: Request) {
     }
 
     // Basic validation
-    if (!fullName || !phone) {
+    if (!phone) {
+      return NextResponse.json(
+        { error: 'Phone number is required' },
+        { status: 400 }
+      );
+    }
+
+    // Clean phone number (strip +91 or spaces, keep 10 digits)
+    const cleanPhone = String(phone).replace(/\D/g, '').slice(-10);
+    if (cleanPhone.length !== 10) {
+      return NextResponse.json(
+        { error: 'Valid 10-digit phone number is required' },
+        { status: 400 }
+      );
+    }
+
+    const rawName = (fullName || '').trim();
+    if (!rawName && !isDirectActionLead) {
       return NextResponse.json(
         { error: 'Full name and Phone number are required' },
         { status: 400 }
       );
     }
 
-    // Clean phone number (strip +91 or spaces, keep 10 digits)
-    const cleanPhone = phone.replace(/\D/g, '').slice(-10);
+    // Format display name for CRM so WhatsApp / Call leads are immediately identifiable
+    let formattedFullName = rawName;
+    if (leadType === 'WHATSAPP') {
+      if (!rawName) {
+        formattedFullName = `WhatsApp Lead (${cleanPhone})`;
+      } else if (!rawName.toLowerCase().includes('whatsapp')) {
+        formattedFullName = `${rawName} (WhatsApp Lead)`;
+      }
+    } else if (leadType === 'PHONE_CALL') {
+      if (!rawName) {
+        formattedFullName = `Phone Call Lead (${cleanPhone})`;
+      } else if (!rawName.toLowerCase().includes('call')) {
+        formattedFullName = `${rawName} (Call Lead)`;
+      }
+    }
 
     // 🎯 Robust Ad Platform Detection (META, GOOGLE, INSTAGRAM, WEBSITE)
     let crmSource = 'WEBSITE';
@@ -193,7 +228,15 @@ export async function POST(request: Request) {
       adInfoParts.push(`Ad Platform: Organic / Direct`);
     }
 
+    const actionBanner =
+      leadType === 'WHATSAPP'
+        ? `📲 WHATSAPP LEAD: Is number (${cleanPhone}) se WhatsApp button click kiya gaya hai`
+        : leadType === 'PHONE_CALL'
+        ? `📞 PHONE CALL LEAD: Is number (${cleanPhone}) se Call button click kiya gaya hai`
+        : '';
+
     const remarksText = [
+      actionBanner,
       adInfoParts.join(' | '),
       experience ? `Background: ${experience}` : '',
       mode ? `Mode: ${mode}` : '',
@@ -202,7 +245,7 @@ export async function POST(request: Request) {
 
     // Prepare payload formatted for CRM
     const crmPayload = {
-      fullName: fullName.trim(),
+      fullName: formattedFullName,
       mobileNumber: cleanPhone,
       email: email && email.trim() ? email.trim() : null,
       domain: CRM_DOMAIN,
