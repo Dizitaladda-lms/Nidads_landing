@@ -5,8 +5,10 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import SubNav from '@/components/SubNav';
 import HiringPartners from '@/components/HiringPartners';
+import StudentProofOfWork from '@/components/StudentProofOfWork';
 import OurEnvironment from '@/components/OurEnvironment';
 import WhyBootcamp from '@/components/WhyBootcamp';
+import MentorsSection from '@/components/MentorsSection';
 import Curriculum from '@/components/Curriculum';
 import ProjectsShowcase from '@/components/ProjectsShowcase';
 import PlacementEcosystem from '@/components/PlacementEcosystem';
@@ -16,6 +18,7 @@ import FAQSection from '@/components/FAQSection';
 import LeadModal from '@/components/LeadModal';
 import MobileStickyBar from '@/components/MobileStickyBar';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import LiveDemandToast from '@/components/LiveDemandToast';
 import NidadsLogo from '@/components/NidadsLogo';
 
 export default function LandingPage() {
@@ -44,7 +47,7 @@ export default function LandingPage() {
       {/* 1. Dedicated Isolated Navbar */}
       <Navbar onOpenModal={() => openCustomModal('Request Immediate Callback', 'Our senior advisor will call you within 15 minutes', 'Navbar CTA')} />
 
-      {/* 2. Hero Section with Above-the-fold Lead Form */}
+      {/* 2. Hero Section with Outcome-First Copy & 3-Step Assessment Form */}
       <HeroSection onLeadSuccess={handleLeadSuccess} />
 
       {/* 3. Sticky Sub Navigation Bar */}
@@ -53,35 +56,41 @@ export default function LandingPage() {
       {/* 4. Hiring Partners Logo Strip (500+ Enterprises) */}
       <HiringPartners />
 
-      {/* 5. Learning environment photo strip */}
+      {/* 5. Proof of Work & Student Project Spotlight */}
+      <StudentProofOfWork />
+
+      {/* 6. Learning environment photo strip */}
       <OurEnvironment />
 
-      {/* 6. Why Choose NIDADS */}
+      {/* 7. Why Choose NIDADS & Financial ROI Comparison Table */}
       <WhyBootcamp />
 
-      {/* 6. AI-Infused Curriculum Section */}
-      <Curriculum onDownloadSyllabus={() => openCustomModal('Download Complete Syllabus (PDF)', 'Enter your details to receive the module-wise PDF brochure on WhatsApp', 'Curriculum Download')} />
+      {/* 8. Humanized MAANG Mentors Section */}
+      <MentorsSection />
 
-      {/* 7. Real-World Projects Showcase */}
+      {/* 9. AI-Infused Curriculum Section with Week 1 Micro-Conversion */}
+      <Curriculum onDownloadSyllabus={() => openCustomModal('Download Complete Syllabus & Week 1 Starter Kit', 'Enter your details to receive the module-wise PDF brochure & starter workbook on WhatsApp', 'Curriculum Download')} />
+
+      {/* 10. Real-World Projects Showcase */}
       <ProjectsShowcase />
 
-      {/* 8. Placement & Career Support Blueprint */}
-      <PlacementEcosystem onOpenModal={() => openCustomModal('Speak to Placement Advisor', 'Learn about placement policies, minimum CTC criteria & hiring partners', 'Placement CTA')} />
+      {/* 11. Placement & Career Support Blueprint with ATS Proofing Guarantee */}
+      <PlacementEcosystem onOpenModal={() => openCustomModal('Speak to Placement Advisor & ATS Audit', 'Learn about placement policies, minimum CTC criteria & hiring partners', 'Placement CTA')} />
 
-      {/* 9. Student Testimonials & Salary Hikes */}
+      {/* 12. Student Testimonials & Salary Hikes */}
       <SuccessStories />
 
-      {/* 10. Recognized Certification Preview */}
+      {/* 13. Recognized Certification Preview */}
       <CertificationSection onOpenModal={() => openCustomModal('Certification Details & Eligibility', 'Check your eligibility criteria for the NIDADS verified certificate', 'Cert CTA')} />
 
-      {/* 12. Objection-Clearing FAQ Section */}
+      {/* 14. Objection-Clearing FAQ Section */}
       <FAQSection onOpenModal={() => openCustomModal('Admissions Query Support', 'Clarify your questions directly with an academic counsellor', 'FAQ CTA')} />
 
-      {/* 13. Pre-Footer High-Impact Conversion Card */}
+      {/* 15. Pre-Footer High-Impact Conversion Card */}
       <section className="py-16 sm:py-20 bg-gradient-to-b from-[#07111e] to-[#050b14] border-t border-[#152d4e] relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-          <div className="inline-block px-3.5 py-1.5 rounded-full bg-[#38b6ff]/10 border border-[#38b6ff]/30 text-[#38b6ff] text-xs font-bold uppercase tracking-wider">
-            Admissions Closing Soon
+          <div className="inline-block px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-black uppercase tracking-wider">
+            ⚡ Admissions Closing Soon &bull; Limited Seats
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
@@ -98,9 +107,9 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <button
               onClick={() => openCustomModal('Apply for Next Cohort', 'Reserve your seat before the cohort fills up', 'PreFooter CTA')}
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#38b6ff] to-[#46d9ff] hover:from-[#0369a1] hover:to-[#38b6ff] text-white font-extrabold text-sm sm:text-base shadow-xl shadow-[#38b6ff]/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-orange-500/25 transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
             >
-              Apply Now &amp; Book Free Counselling
+              Apply Now &amp; Book Free Counselling →
             </button>
             <a
               href="tel:+919205436796"
@@ -120,7 +129,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* 14. Isolated Footer (Zero Outbound Leaks with mobile bottom clearance) */}
+      {/* 16. Isolated Footer (Zero Outbound Leaks with mobile bottom clearance) */}
       <footer className="bg-transparent border-t border-[#dbeafe] pt-8 sm:pt-10 pb-24 sm:pb-10 text-slate-700 text-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -146,7 +155,7 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {/* 15. Global Lead Capture Popup Modal */}
+      {/* 17. Global Lead Capture Popup Modal */}
       <LeadModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
@@ -156,11 +165,14 @@ export default function LandingPage() {
         onSuccess={handleLeadSuccess}
       />
 
-      {/* 16. Mobile Floating Bottom Bar for High Ads Conversion */}
+      {/* 18. Mobile Floating Bottom Bar for High Ads Conversion */}
       <MobileStickyBar onOpenModal={() => openCustomModal('Book Free Counselling & Syllabus', 'Instant WhatsApp callback and detailed syllabus', 'Mobile Sticky CTA')} />
 
-      {/* 17. WhatsApp Floating Trigger Button */}
+      {/* 19. WhatsApp Floating Trigger Button */}
       <WhatsAppButton />
+
+      {/* 20. Live Demand Social Proof Ticker */}
+      <LiveDemandToast />
     </div>
   );
 }

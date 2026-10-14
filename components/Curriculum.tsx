@@ -185,14 +185,14 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
     },
     {
       phase: 'Phase 5',
-      title: 'Generative AI, Large Language Models (LLMs) & RAG Workflows',
+      title: 'Building & Deploying Custom LLMs & AI Agents for Business Automation',
       duration: 'Weeks 21 - 28',
       tools: ['LangChain', 'LlamaIndex', 'OpenAI API', 'ChromaDB', 'Pinecone', 'CrewAI'],
       topics: [
-        'Prompt Engineering & Structured Outputs with modern LLMs',
-        'Retrieval-Augmented Generation (RAG) architecture using Vector Databases (ChromaDB, Pinecone)',
-        'Building Multi-Agent AI Workflows with LangChain, LangGraph & CrewAI',
-        'Fine-tuning open-source LLMs (Llama 3 / Mistral) using LoRA / QLoRA',
+        'Production Multi-Agent Systems & Autonomous Workflows (CrewAI & LangGraph)',
+        'Enterprise Retrieval-Augmented Generation (RAG) with Vector Databases (ChromaDB, Pinecone)',
+        'Fine-Tuning Open Source LLMs (Llama 3, Mistral) with LoRA / QLoRA for Domain Datasets',
+        'Structured Output Function Calling, Prompt Engineering & Hallucination Guardrails',
       ],
     },
     {
@@ -347,18 +347,33 @@ export default function Curriculum({ onDownloadSyllabus }: CurriculumProps) {
           })}
         </AutoCarousel>
 
-        {/* Bottom Banner - Clean White Card - Stacks on mobile */}
-        <div className="mt-6 sm:mt-8 p-5 sm:p-7 rounded-2xl bg-white border border-slate-200/90 shadow-md shadow-slate-200/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 text-center sm:text-left">
-          <div className="space-y-1">
-            <h4 className="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">Want the syllabus PDF?</h4>
-            <p className="text-xs sm:text-sm text-slate-600 font-medium">Get projects, assignment schedules &amp; tools list delivered instantly on WhatsApp.</p>
+        {/* Week 1 Free Test-Drive Micro-Conversion Banner */}
+        <div className="mt-8 sm:mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0d223d] via-[#091b32] to-[#0d223d] border-2 border-[#38b6ff]/40 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
+          <div className="space-y-2 max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-black uppercase tracking-wider">
+              <span>⚡ ZERO RISK TEST-DRIVE</span>
+            </div>
+            <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+              Not Sure If You Can Code? Try Week 1 for Free.
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Get the complete <strong>Week 1 Python &amp; AI Interactive Starter Kit</strong> + video lesson sent directly to your WhatsApp. Test your aptitude before committing a single rupee.
+            </p>
           </div>
-          <button
-            onClick={onDownloadSyllabus}
-            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer whitespace-nowrap shrink-0"
-          >
-            Download Curriculum PDF
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto shrink-0">
+            <button
+              onClick={onDownloadSyllabus}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-orange-500/25 transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
+            >
+              Get Week 1 Starter Kit on WhatsApp →
+            </button>
+            <button
+              onClick={onDownloadSyllabus}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-[#07111e] hover:bg-[#0a1626] border border-[#162c4d] text-gray-200 font-bold text-xs sm:text-sm transition-colors cursor-pointer whitespace-nowrap"
+            >
+              Download Full PDF
+            </button>
+          </div>
         </div>
 
       </div>

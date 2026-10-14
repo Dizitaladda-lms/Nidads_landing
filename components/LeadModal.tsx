@@ -366,12 +366,15 @@ export default function LeadModal({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3 px-5 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-bold text-sm sm:text-base shadow-lg shadow-sky-500/25 transition-all cursor-pointer flex items-center justify-center active:scale-98"
+                className="w-full mt-2 py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-orange-500/25 transition-all cursor-pointer flex items-center justify-center active:scale-98"
               >
                 {loading ? (
-                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  <span className="flex items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                    Submitting...
+                  </span>
                 ) : (
-                  <span>Book A Free Session</span>
+                  <span>Book Free 1:1 Career Session →</span>
                 )}
               </button>
 
