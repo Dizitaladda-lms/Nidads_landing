@@ -81,80 +81,22 @@ export default function PlacementEcosystem({ onOpenModal }: PlacementProps) {
           ))}
         </AutoCarousel>
 
-        {/* Humanized Placement Cell & ATS Proofing Spotlight Card */}
-        <div className="mt-12 rounded-3xl bg-[#0a1b30] border-2 border-[#1e3c66] p-6 sm:p-9 shadow-2xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left: Placement Head Profile & Human Touch */}
-            <div className="lg:col-span-5 space-y-4 text-center sm:text-left">
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-                <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl overflow-hidden border-2 border-[#38b6ff] shadow-xl shrink-0 bg-slate-800">
-                  <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&q=80"
-                    alt="Harsh Vardhan - Head of Placements"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <div className="inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[11px] font-black uppercase tracking-wider mb-1">
-                    Direct Placement Cell
-                  </div>
-                  <h4 className="text-lg sm:text-xl font-black text-white">Harsh Vardhan</h4>
-                  <p className="text-xs font-bold text-[#38b6ff]">Head of Corporate Hiring Partnerships</p>
-                  <p className="text-[11px] text-gray-400 mt-0.5">Ex-Tech Recruiter &bull; 14+ Years in Tech Talent Acquisition</p>
-                </div>
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-300 italic leading-relaxed bg-[#07111e] p-3.5 rounded-2xl border border-[#152d4e]">
-                &ldquo;Recruiters spend 6 seconds on a resume. If your bullet points don’t contain quantified business impact and pass the ATS parse filter with a 90%+ score, you won&apos;t get interviewed. Our placement cell works 1-on-1 with every single student to fix this before any application is sent.&rdquo;
-              </p>
-            </div>
-
-            {/* Right: The 3-Step ATS Proofing Process & Call to Action */}
-            <div className="lg:col-span-7 space-y-4">
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                Our 3-Step ATS Resume Guarantee
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#162c4d] space-y-1">
-                  <div className="text-emerald-400 font-extrabold text-sm">01. ATS Score 90%+</div>
-                  <p className="text-gray-300 text-[11px] leading-tight">
-                    Optimized keywords for Python, SQL, ML, &amp; Cloud to breeze past Workday &amp; Taleo algorithms.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#162c4d] space-y-1">
-                  <div className="text-[#38b6ff] font-extrabold text-sm">02. Quantified Impact</div>
-                  <p className="text-gray-300 text-[11px] leading-tight">
-                    Every GitHub project rewritten with business metrics: revenue lift, latency drop &amp; model AUC.
-                  </p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-[#07111e] border border-[#162c4d] space-y-1">
-                  <div className="text-amber-400 font-extrabold text-sm">03. Direct HR Referrals</div>
-                  <p className="text-gray-300 text-[11px] leading-tight">
-                    Fast-tracked directly to HR inboxes across 500+ enterprises—skipping crowded job boards.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#152d4e]">
-                <div className="text-xs text-gray-400 text-center sm:text-left">
-                  <strong className="text-white">98% Placement Record</strong> across 25,000+ Enrolled Learners
-                </div>
-                <button
-                  onClick={onOpenModal}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-orange-500/25 transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
-                >
-                  Book Free 1:1 ATS Resume &amp; Career Audit →
-                </button>
-              </div>
-
-            </div>
-
+        {/* Placement Track Record Banner */}
+        <div className="mt-12 rounded-2xl bg-white border border-slate-200/90 shadow-md shadow-slate-200/50 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
+              98% Placement Rate Across 25,000+ Enrolled Learners
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl font-medium">
+              From fresh graduates securing their first 6-12 LPA tech job to experienced professionals achieving senior 18-28 LPA positions.
+            </p>
           </div>
+          <button
+            onClick={onOpenModal}
+            className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#009bd7] to-[#38b6ff] hover:from-[#0369a1] hover:to-[#0284c7] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-sky-500/25 whitespace-nowrap transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0"
+          >
+            Speak to Placement Cell
+          </button>
         </div>
 
       </div>

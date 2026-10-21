@@ -11,9 +11,7 @@ export default function SubNav({ onOpenModal }: SubNavProps) {
 
   const navItems = [
     { label: 'Overview', href: '#overview' },
-    { label: 'Proof of Work', href: '#proof-of-work' },
     { label: 'Why NIDADS', href: '#why' },
-    { label: 'Mentors', href: '#mentors' },
     { label: 'Curriculum', href: '#curriculum' },
     { label: 'Projects', href: '#projects' },
     { label: 'Placements', href: '#placements' },
