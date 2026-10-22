@@ -40,7 +40,7 @@ export default function LeadModal({
     e.preventDefault();
     setErrorMessage('');
 
-    // Check device rate limit: Max 2 submissions per 60 seconds
+    // Check device rate limit: Max 15 submissions per 60 seconds
     const now = Date.now();
     let subTimes: number[] = [];
     try {
@@ -49,9 +49,9 @@ export default function LeadModal({
       subTimes = [];
     }
     const recentSubmissions = subTimes.filter((t: number) => now - t < 60000);
-    if (recentSubmissions.length >= 2) {
+    if (recentSubmissions.length >= 15) {
       const waitSeconds = Math.max(1, Math.ceil((recentSubmissions[0] + 60000 - now) / 1000));
-      setErrorMessage(`1 minute ke andar same device se maximum 2 baar lead submit ki ja sakti hai. Kripya ${waitSeconds} second baad try karein.`);
+      setErrorMessage(`1 minute ke andar same device se maximum submissions limit reach ho gayi hai. Kripya ${waitSeconds} second baad try karein.`);
       return;
     }
 
@@ -149,8 +149,9 @@ export default function LeadModal({
       } catch (dlErr) {
         console.warn('Auto-download prevented:', dlErr);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Lead error:', err);
+      setErrorMessage('Network connection error. Kripya dubara try karein ya internet check karein.');
     } finally {
       setLoading(false);
     }
@@ -296,7 +297,16 @@ export default function LeadModal({
                     required
                     pattern="[0-9]{10}"
                     value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+                    onChange={(e) => {
+                      const digits = e.target.value.replace(/\D/g, '');
+                      let clean = digits;
+                      if (clean.length > 10 && clean.startsWith('91')) {
+                        clean = clean.slice(2);
+                      } else if (clean.length > 10 && clean.startsWith('0')) {
+                        clean = clean.slice(1);
+                      }
+                      setFormData({ ...formData, phone: clean.slice(0, 10) });
+                    }}
                     placeholder="9876543210"
                     className="w-full px-3.5 py-2.5 rounded-r-xl bg-slate-50 border border-slate-200 text-slate-900 text-base sm:text-sm focus:bg-white focus:outline-none focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20 transition-all placeholder:text-slate-400 font-medium"
                   />

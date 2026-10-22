@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server';
 
-const CRM_ENDPOINT = process.env.CRM_ENDPOINT || '';
+const CRM_ENDPOINT = process.env.CRM_ENDPOINT || 'https://leads.dizitaladda.com/api/public/leads';
 const CRM_COURSE_NAME = process.env.CRM_COURSE_NAME || 'Data Science & AI Bootcamp';
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'NIDADS';
 const CRM_API_KEY = process.env.CRM_API_KEY || '';
 
-// Rate Limiter: Max 2 leads per 1 minute (60 seconds) per device/IP
+// Rate Limiter: Max 15 leads per 1 minute (60 seconds) per device/IP
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 60 seconds
-const MAX_LEADS_PER_WINDOW = 2; // 2 leads max
+const MAX_LEADS_PER_WINDOW = 15; // 15 leads max
 
 // In-memory sliding window store: clientId -> timestamp[]
 const rateLimitCache = new Map<string, number[]>();
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
       (time) => now - time < RATE_LIMIT_WINDOW_MS
     );
 
-    const effectiveMaxLeads = isDirectActionLead ? 6 : MAX_LEADS_PER_WINDOW;
+    const effectiveMaxLeads = isDirectActionLead ? 25 : MAX_LEADS_PER_WINDOW;
 
     if (previousTimestamps.length >= effectiveMaxLeads) {
       const oldestTimestamp = previousTimestamps[0];
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: 'Rate limit exceeded',
-          message: `1 minute ke andar same device se maximum 2 baar lead submit ki ja sakti hai. Kripya ${waitSeconds} second baad try karein.`,
+          message: `1 minute ke andar same device se maximum lead submissions limit reach ho gayi hai. Kripya ${waitSeconds} second baad try karein.`,
           retryAfter: waitSeconds,
         },
         {
@@ -274,6 +274,8 @@ export async function POST(request: Request) {
           headers['x-api-key'] = CRM_API_KEY;
         }
 
+        console.log('🚀 [FORWARDING LEAD TO CRM]:', CRM_ENDPOINT, JSON.stringify(crmPayload));
+
         const crmRes = await fetch(CRM_ENDPOINT, {
           method: 'POST',
           headers,
@@ -281,6 +283,7 @@ export async function POST(request: Request) {
         });
 
         crmResponseData = await crmRes.json().catch(() => null);
+        console.log('✅ [CRM RESPONSE]:', crmRes.status, crmResponseData);
       } catch (crmErr) {
         console.error('⚠️ [CRM FORWARDING ERROR]:', crmErr);
       }

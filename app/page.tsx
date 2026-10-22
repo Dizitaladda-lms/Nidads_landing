@@ -17,6 +17,7 @@ import LeadModal from '@/components/LeadModal';
 import MobileStickyBar from '@/components/MobileStickyBar';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import NidadsLogo from '@/components/NidadsLogo';
+import AdminLeadViewer from '@/components/AdminLeadViewer';
 
 export default function LandingPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -142,6 +143,7 @@ export default function LandingPage() {
 
           <div className="pt-4 border-t border-blue-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
             <div className="text-center sm:text-left">&copy; {new Date().getFullYear()} NIDADS - National Institute of Data Analytics &amp; Data Science. All rights reserved.</div>
+            <AdminLeadViewer />
           </div>
         </div>
       </footer>
