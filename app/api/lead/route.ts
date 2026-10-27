@@ -4,6 +4,7 @@ const CRM_ENDPOINT = process.env.CRM_ENDPOINT || 'https://leads.dizitaladda.com/
 const CRM_COURSE_NAME = process.env.CRM_COURSE_NAME || 'Data Science & AI Bootcamp';
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'NIDADS';
 const CRM_API_KEY = process.env.CRM_API_KEY || '';
+const CRM_TIMEOUT_MS = 8000;
 
 // Rate Limiter: Max 15 leads per 1 minute (60 seconds) per device/IP
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 60 seconds
@@ -280,6 +281,7 @@ export async function POST(request: Request) {
           method: 'POST',
           headers,
           body: JSON.stringify(crmPayload),
+          signal: AbortSignal.timeout(CRM_TIMEOUT_MS),
         });
 
         crmResponseData = await crmRes.json().catch(() => null);

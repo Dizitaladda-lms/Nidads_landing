@@ -48,6 +48,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
     }
 
     setLoading(true);
+    setSubmitted(true);
 
     try {
       let deviceId = '';
@@ -93,11 +94,13 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
       const resData = await res.json().catch(() => null);
 
       if (res.status === 429) {
+        setSubmitted(false);
         setErrorMessage(resData?.message || '1 minute ke andar same device se maximum 2 leads submit ho sakti hain. Kripya thoda intezaar karein.');
         return;
       }
 
       if (!res.ok) {
+        setSubmitted(false);
         setErrorMessage(resData?.error || 'Lead submit nahi ho payi. Kripya dubara try karein.');
         return;
       }
@@ -114,7 +117,6 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
       });
       localStorage.setItem('nidads_leads', JSON.stringify(existingLeads));
 
-      setSubmitted(true);
       onLeadSuccess(formData);
 
       // Trigger automatic brochure download based on course selection
@@ -142,6 +144,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
         console.warn('Auto-download prevented:', dlErr);
       }
     } catch (err: any) {
+      setSubmitted(false);
       console.error('Lead submission error:', err);
       setErrorMessage('Network connection error. Kripya dubara try karein ya internet check karein.');
     } finally {
@@ -291,12 +294,16 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
 
               {submitted ? (
                 <div className="py-6 text-center space-y-4">
-                  <div className="w-12 h-12 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
-                    ✓
+                  <div className={`w-12 h-12 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto text-xl font-bold ${loading ? 'animate-spin border-t-transparent' : ''}`}>
+                    {loading ? '' : '✓'}
                   </div>
-                  <h4 className="text-xl font-bold text-white">Thank You! Request Received</h4>
+                  <h4 className="text-xl font-bold text-white">
+                    {loading ? 'Submitting your request...' : 'Thank You! Request Received'}
+                  </h4>
                   <p className="text-sm text-gray-300">
-                    Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.
+                    {loading
+                      ? 'Please wait while we send your details securely.'
+                      : 'Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.'}
                   </p>
 
                   {/* Post-submission Brochure Choice & Download Buttons */}

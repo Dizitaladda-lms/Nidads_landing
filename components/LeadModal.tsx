@@ -56,6 +56,7 @@ export default function LeadModal({
     }
 
     setLoading(true);
+    setSubmitted(true);
 
     try {
       let deviceId = '';
@@ -101,11 +102,13 @@ export default function LeadModal({
       const resData = await res.json().catch(() => null);
 
       if (res.status === 429) {
+        setSubmitted(false);
         setErrorMessage(resData?.message || '1 minute ke andar same device se maximum 2 leads submit ho sakti hain. Kripya thoda intezaar karein.');
         return;
       }
 
       if (!res.ok) {
+        setSubmitted(false);
         setErrorMessage(resData?.error || 'Lead submit nahi ho payi. Kripya dubara try karein.');
         return;
       }
@@ -122,7 +125,6 @@ export default function LeadModal({
       });
       localStorage.setItem('nidads_leads', JSON.stringify(existingLeads));
 
-      setSubmitted(true);
       if (onSuccess) onSuccess(formData);
 
       // Trigger automatic brochure download based on course selection
@@ -150,6 +152,7 @@ export default function LeadModal({
         console.warn('Auto-download prevented:', dlErr);
       }
     } catch (err: any) {
+      setSubmitted(false);
       console.error('Lead error:', err);
       setErrorMessage('Network connection error. Kripya dubara try karein ya internet check karein.');
     } finally {
@@ -179,12 +182,16 @@ export default function LeadModal({
 
         {submitted ? (
           <div className="py-6 text-center space-y-4">
-            <div className="w-12 sm:w-14 h-12 sm:h-14 bg-emerald-100 text-emerald-600 border border-emerald-200 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold">
-              ✓
+            <div className={`w-12 sm:w-14 h-12 sm:h-14 bg-emerald-100 text-emerald-600 border border-emerald-200 rounded-full flex items-center justify-center mx-auto text-xl sm:text-2xl font-bold ${loading ? 'animate-spin border-t-transparent' : ''}`}>
+              {loading ? '' : '✓'}
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-slate-900">Thank You! Request Received</h3>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900">
+              {loading ? 'Submitting your request...' : 'Thank You! Request Received'}
+            </h3>
             <p className="text-xs sm:text-sm text-slate-600">
-              Your details have been submitted successfully. Choose which course brochure you want to download:
+              {loading
+                ? 'Please wait while we send your details securely.'
+                : 'Your details have been submitted successfully. Choose which course brochure you want to download:'}
             </p>
 
             {/* Post-submission Brochure Selection & Download Action Buttons */}
