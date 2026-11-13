@@ -4,6 +4,7 @@ const CRM_ENDPOINT = process.env.CRM_ENDPOINT || '';
 const CRM_COURSE_NAME = process.env.CRM_COURSE_NAME || 'Data Science & AI Bootcamp';
 const CRM_DOMAIN = process.env.CRM_DOMAIN || 'NIDADS';
 const CRM_API_KEY = process.env.CRM_API_KEY || '';
+const CRM_ORIGIN = process.env.CRM_ORIGIN || '';
 
 // Rate Limiter: Max 2 leads per 1 minute (60 seconds) per device/IP
 const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 60 seconds
@@ -270,6 +271,18 @@ export async function POST(request: Request) {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         };
+
+        // Some CRM gateways reject server-to-server requests without a trusted
+        // browser origin. Prefer an explicitly configured, CRM-allowlisted site
+        // origin; otherwise forward the same-origin browser request headers.
+        const requestOrigin = request.headers.get('origin');
+        const requestReferer = request.headers.get('referer');
+        const forwardedOrigin = CRM_ORIGIN || requestOrigin || (requestReferer ? new URL(requestReferer).origin : '');
+        const forwardedReferer = CRM_ORIGIN
+          ? `${CRM_ORIGIN.replace(/\/$/, '')}/`
+          : requestReferer || (requestOrigin ? `${requestOrigin.replace(/\/$/, '')}/` : '');
+        if (forwardedOrigin) headers['Origin'] = forwardedOrigin;
+        if (forwardedReferer) headers['Referer'] = forwardedReferer;
 
         if (CRM_API_KEY) {
           headers['Authorization'] = `Bearer ${CRM_API_KEY}`;
