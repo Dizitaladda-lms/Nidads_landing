@@ -260,7 +260,9 @@ export async function POST(request: Request) {
       remarks: remarksText,
     };
 
-    let crmResponseData = null;
+    let crmResponseData: any = null;
+    let crmStatus: number | null = null;
+    let crmSynced = false;
 
     if (CRM_ENDPOINT) {
       try {
@@ -280,7 +282,15 @@ export async function POST(request: Request) {
           body: JSON.stringify(crmPayload),
         });
 
-        crmResponseData = await crmRes.json().catch(() => null);
+        crmStatus = crmRes.status;
+        const responseText = await crmRes.text();
+        try {
+          crmResponseData = responseText ? JSON.parse(responseText) : null;
+        } catch {
+          crmResponseData = null;
+        }
+        crmSynced = crmRes.ok && (crmResponseData?.success === true || crmResponseData?.status === 'success');
+        if (!crmSynced) console.error(`[CRM SYNC FAILED] HTTP ${crmRes.status}: ${responseText.slice(0, 500)}`);
       } catch (crmErr) {
         console.error('⚠️ [CRM FORWARDING ERROR]:', crmErr);
       }
@@ -288,8 +298,11 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: 'Lead captured and synced with CRM successfully',
-      crmSynced: !!crmResponseData?.success,
+      message: crmSynced
+        ? 'Lead captured and synced with CRM successfully'
+        : 'Lead captured, but CRM sync failed. Please contact support.',
+      crmSynced,
+      crmStatus,
       lead: {
         fullName,
         phone: cleanPhone,

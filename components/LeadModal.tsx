@@ -33,6 +33,7 @@ export default function LeadModal({
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [crmSyncWarning, setCrmSyncWarning] = useState('');
 
   if (!isOpen) return null;
 
@@ -110,6 +111,14 @@ export default function LeadModal({
         return;
       }
 
+      if (resData?.crmSynced === false) {
+        setCrmSyncWarning(resData.crmStatus === 403
+          ? 'Aapki request receive ho gayi hai, lekin CRM ne access deny kiya (403). CRM API key/permissions check karni hongi.'
+          : 'Aapki request receive ho gayi hai, lekin CRM sync nahi hua. Team ko inform kar diya gaya hai.');
+      } else {
+        setCrmSyncWarning('');
+      }
+
       // Record successful submission timestamp for this device
       recentSubmissions.push(now);
       localStorage.setItem('nidads_lead_sub_times', JSON.stringify(recentSubmissions));
@@ -185,6 +194,7 @@ export default function LeadModal({
             <p className="text-xs sm:text-sm text-slate-600">
               Your details have been submitted successfully. Choose which course brochure you want to download:
             </p>
+            {crmSyncWarning && <p role="status" className="text-xs text-amber-700">{crmSyncWarning}</p>}
 
             {/* Post-submission Brochure Selection & Download Action Buttons */}
             <div className="pt-2 space-y-3 bg-slate-50 p-4 rounded-2xl border border-slate-200">

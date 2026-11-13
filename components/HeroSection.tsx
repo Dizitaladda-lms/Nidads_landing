@@ -22,6 +22,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [crmSyncWarning, setCrmSyncWarning] = useState('');
 
   // Capture ad attribution parameters immediately on page visit
   useEffect(() => {
@@ -100,6 +101,14 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
       if (!res.ok) {
         setErrorMessage(resData?.error || 'Lead submit nahi ho payi. Kripya dubara try karein.');
         return;
+      }
+
+      if (resData?.crmSynced === false) {
+        setCrmSyncWarning(resData.crmStatus === 403
+          ? 'Aapki request receive ho gayi hai, lekin CRM ne access deny kiya (403). CRM API key/permissions check karni hongi.'
+          : 'Aapki request receive ho gayi hai, lekin CRM sync nahi hua. Team ko inform kar diya gaya hai.');
+      } else {
+        setCrmSyncWarning('');
       }
 
       // Record successful submission timestamp for this device
@@ -297,6 +306,7 @@ export default function HeroSection({ onLeadSuccess }: HeroSectionProps) {
                   <p className="text-sm text-gray-300">
                     Your details have been submitted successfully. Senior Career Counsellor from NIDADS will call you shortly.
                   </p>
+                  {crmSyncWarning && <p role="status" className="text-xs text-amber-300">{crmSyncWarning}</p>}
 
                   {/* Post-submission Brochure Choice & Download Buttons */}
                   <div className="pt-2 space-y-3 bg-[#050b14]/80 p-4 rounded-2xl border border-[#162c4d]">
